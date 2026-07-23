@@ -412,6 +412,11 @@ class _NotificationText {
         body: localizations.notificationPartnerApprovedBody,
         icon: Icons.verified_rounded,
       ),
+      AppNotificationType.partnerApplicationRejected => _NotificationText(
+        title: localizations.notificationPartnerRejectedTitle,
+        body: localizations.notificationPartnerRejectedBody,
+        icon: Icons.cancel_rounded,
+      ),
       AppNotificationType.unknown => _NotificationText(
         title: localizations.notificationUnknownTitle,
         body: localizations.notificationUnknownBody,

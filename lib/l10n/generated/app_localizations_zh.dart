@@ -1580,6 +1580,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationPartnerApprovedBody => '您的合作申请已成功通过审核。';
 
   @override
+  String get notificationPartnerRejectedTitle => 'درخواست همکاری رد شد';
+
+  @override
+  String get notificationPartnerRejectedBody =>
+      'دلیل رد را در جزئیات درخواست همکاری مشاهده کنید.';
+
+  @override
+  String get partnerApplicationRejectionReasonTitle => 'دلیل رد نهایی درخواست';
+
+  @override
+  String get partnerApplicationRejectionReasonFallback =>
+      'دلیل رد در حال حاضر قابل نمایش نیست. صفحه را تازه‌سازی کنید.';
+
+  @override
   String get notificationUnknownTitle => '新通知';
 
   @override
