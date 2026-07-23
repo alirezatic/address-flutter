@@ -1702,6 +1702,20 @@ class AppLocalizationsFa extends AppLocalizations {
       'درخواست همکاری شما با موفقیت تأیید شده است.';
 
   @override
+  String get notificationPartnerRejectedTitle => 'درخواست همکاری رد شد';
+
+  @override
+  String get notificationPartnerRejectedBody =>
+      'دلیل رد را در جزئیات درخواست همکاری مشاهده کنید.';
+
+  @override
+  String get partnerApplicationRejectionReasonTitle => 'دلیل رد نهایی درخواست';
+
+  @override
+  String get partnerApplicationRejectionReasonFallback =>
+      'دلیل رد در حال حاضر قابل نمایش نیست. صفحه را تازه‌سازی کنید.';
+
+  @override
   String get notificationUnknownTitle => 'اعلان جدید';
 
   @override

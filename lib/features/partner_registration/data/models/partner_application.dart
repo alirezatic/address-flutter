@@ -158,6 +158,20 @@ class PartnerApplicationDetails {
     return null;
   }
 
+  String? get latestRejectionReason {
+    for (final entry in statusHistory.reversed) {
+      if (entry.eventCode == 'application_rejected') {
+        final value = entry.note?.trim();
+
+        if (value != null && value.isNotEmpty) {
+          return value;
+        }
+      }
+    }
+
+    return null;
+  }
+
   List<PartnerCorrectionItem> get latestCorrectionItems {
     if (correctionItems.isNotEmpty) {
       return correctionItems;

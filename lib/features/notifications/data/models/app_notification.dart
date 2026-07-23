@@ -3,6 +3,7 @@ enum AppNotificationType {
   partnerApplicationReviewStarted('partner_application.review_started'),
   partnerApplicationNeedsCorrection('partner_application.needs_correction'),
   partnerApplicationApproved('partner_application.approved'),
+  partnerApplicationRejected('partner_application.rejected'),
   unknown('');
 
   const AppNotificationType(this.value);

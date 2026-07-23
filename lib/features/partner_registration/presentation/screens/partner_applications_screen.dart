@@ -273,6 +273,17 @@ class _ApplicationCard extends StatelessWidget {
   final PartnerApplicationSummary application;
   final VoidCallback onTap;
 
+  Color _statusShadowColor() {
+    return switch (application.status) {
+      PartnerApplicationStatus.submitted => const Color(0xFF1565C0),
+      PartnerApplicationStatus.underReview => const Color(0xFFF9A825),
+      PartnerApplicationStatus.needsCorrection => const Color(0xFFEF6C00),
+      PartnerApplicationStatus.rejected => const Color(0xFFC62828),
+      PartnerApplicationStatus.approved => const Color(0xFF2E7D32),
+      PartnerApplicationStatus.unknown => const Color(0xFF616161),
+    };
+  }
+
   String _activityTitle(AppLocalizations localizations) {
     final rawIds = <String>[
       if (application.primaryItemId != null) application.primaryItemId!,
@@ -306,9 +317,15 @@ class _ApplicationCard extends StatelessWidget {
     final storeName = application.storeName.trim().isEmpty
         ? 'â€”'
         : application.storeName.trim();
+    final statusShadowColor = _statusShadowColor();
 
     return Card(
       margin: EdgeInsets.zero,
+      color: Colors.white,
+      surfaceTintColor: Colors.white,
+      shadowColor: statusShadowColor.withValues(alpha: 0.58),
+      elevation: 9,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
@@ -427,13 +444,25 @@ class _StatusChip extends StatelessWidget {
   final String label;
   final PartnerApplicationStatus status;
 
+  Color _statusColor() {
+    return switch (status) {
+      PartnerApplicationStatus.submitted => const Color(0xFF1565C0),
+      PartnerApplicationStatus.underReview => const Color(0xFFF9A825),
+      PartnerApplicationStatus.needsCorrection => const Color(0xFFEF6C00),
+      PartnerApplicationStatus.rejected => const Color(0xFFC62828),
+      PartnerApplicationStatus.approved => const Color(0xFF2E7D32),
+      PartnerApplicationStatus.unknown => const Color(0xFF616161),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    final color = status == PartnerApplicationStatus.needsCorrection
-        ? Theme.of(context).colorScheme.error
-        : Theme.of(context).colorScheme.primary;
+    final color = _statusColor();
 
     return Chip(
+      backgroundColor: Colors.white,
+      shadowColor: color.withValues(alpha: 0.68),
+      elevation: 7,
       avatar: Icon(Icons.circle, size: 12, color: color),
       label: Text(label),
     );

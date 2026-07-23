@@ -1720,6 +1720,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Your partner application has been approved successfully.';
 
   @override
+  String get notificationPartnerRejectedTitle => 'Partner application rejected';
+
+  @override
+  String get notificationPartnerRejectedBody =>
+      'Open the application details to review the rejection reason.';
+
+  @override
+  String get partnerApplicationRejectionReasonTitle => 'Final rejection reason';
+
+  @override
+  String get partnerApplicationRejectionReasonFallback =>
+      'The rejection reason is not available yet. Refresh the page.';
+
+  @override
   String get notificationUnknownTitle => 'New notification';
 
   @override

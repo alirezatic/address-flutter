@@ -147,6 +147,11 @@ class _PartnerApplicationDetailsScreenState
                       onStartCorrection: _startCorrection,
                     ),
                   ],
+                  if (_details!.summary.status ==
+                      PartnerApplicationStatus.rejected) ...<Widget>[
+                    const SizedBox(height: AppSpacingTokens.medium),
+                    _RejectionCard(details: _details!),
+                  ],
                   const SizedBox(height: AppSpacingTokens.medium),
                   _HistoryCard(details: _details!),
                 ],
@@ -410,6 +415,58 @@ class _CorrectionItemRow extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _RejectionCard extends StatelessWidget {
+  const _RejectionCard({required this.details});
+
+  final PartnerApplicationDetails details;
+
+  @override
+  Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    final colors = Theme.of(context).colorScheme;
+    final reason =
+        details.latestRejectionReason ??
+        localizations.partnerApplicationRejectionReasonFallback;
+
+    return Card(
+      margin: EdgeInsets.zero,
+      color: colors.errorContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacingTokens.large),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.cancel_rounded, color: colors.onErrorContainer),
+                const SizedBox(width: AppSpacingTokens.small),
+                Expanded(
+                  child: Text(
+                    localizations.partnerApplicationRejectionReasonTitle,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: colors.onErrorContainer,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: AppSpacingTokens.medium),
+            Text(
+              reason,
+              style: TextStyle(
+                color: colors.onErrorContainer,
+                height: 1.6,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

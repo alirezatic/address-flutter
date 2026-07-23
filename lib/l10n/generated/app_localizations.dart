@@ -3204,6 +3204,30 @@ abstract class AppLocalizations {
   /// **'درخواست همکاری شما با موفقیت تأیید شده است.'**
   String get notificationPartnerApprovedBody;
 
+  /// No description provided for @notificationPartnerRejectedTitle.
+  ///
+  /// In fa, this message translates to:
+  /// **'درخواست همکاری رد شد'**
+  String get notificationPartnerRejectedTitle;
+
+  /// No description provided for @notificationPartnerRejectedBody.
+  ///
+  /// In fa, this message translates to:
+  /// **'دلیل رد را در جزئیات درخواست همکاری مشاهده کنید.'**
+  String get notificationPartnerRejectedBody;
+
+  /// No description provided for @partnerApplicationRejectionReasonTitle.
+  ///
+  /// In fa, this message translates to:
+  /// **'دلیل رد نهایی درخواست'**
+  String get partnerApplicationRejectionReasonTitle;
+
+  /// No description provided for @partnerApplicationRejectionReasonFallback.
+  ///
+  /// In fa, this message translates to:
+  /// **'دلیل رد در حال حاضر قابل نمایش نیست. صفحه را تازه‌سازی کنید.'**
+  String get partnerApplicationRejectionReasonFallback;
+
   /// No description provided for @notificationUnknownTitle.
   ///
   /// In fa, this message translates to:
