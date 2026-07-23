@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+import 'package:address/core/design_system/tokens/app_design_tokens.dart';
+import 'package:address/core/design_system/colors/app_colors.dart';
+
+extension BuildContextExtension on BuildContext {
+  // --- Theme & Tokens ---
+  ThemeData get theme => Theme.of(this);
+  ColorScheme get colorScheme => theme.colorScheme;
+  TextTheme get textTheme => theme.textTheme;
+
+  AppDesignTokens get tokens =>
+      theme.extension<AppDesignTokens>() ?? const AppDesignTokens();
+
+  // --- App Colors (Direct Access) ---
+  Color get white => AppColors.white;
+  Color get black => AppColors.black;
+  Color get transparent => AppColors.transparent;
+  Color get primary => AppColors.primary;
+  Color get secondary => AppColors.secondary;
+  Color get background => AppColors.background;
+  Color get textPrimary => AppColors.textPrimary;
+  Color get textSecondary => AppColors.textSecondary;
+  // در صورت نیاز سایر رنگ‌های AppColors را اینجا اضافه کنید
+
+  // --- Responsive & Sizing ---
+  double get height => MediaQuery.sizeOf(this).height;
+  double get width => MediaQuery.sizeOf(this).width;
+
+  /// درصد از ارتفاع صفحه
+  double h(double percent) => height * (percent / 100);
+
+  /// درصد از عرض صفحه
+  double w(double percent) => width * (percent / 100);
+
+  // --- Typography ---
+  /// Responsive font size (به‌روزرسانی شده برای جلوگیری از خطای Deprecated)
+  double sp(double size) => MediaQuery.textScalerOf(this).scale(size);
+
+  double get textScale => MediaQuery.textScalerOf(this).scale(1.0);
+
+  // --- Device Type & Screen ---
+  bool get isMobile => width < 600;
+  bool get isTablet => width >= 600 && width < 1024;
+  bool get isDesktop => width >= 1024;
+
+  EdgeInsets get safePadding => MediaQuery.paddingOf(this);
+
+  Orientation get orientation => MediaQuery.orientationOf(this);
+  bool get isLandscape => orientation == Orientation.landscape;
+  bool get isPortrait => orientation == Orientation.portrait;
+}

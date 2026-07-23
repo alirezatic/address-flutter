@@ -1,0 +1,124 @@
+{
+  "@@locale": "en",
+  "language": "Language",
+  "@language": {
+    "description": "Word for language",
+    "type": "text"
+  },
+  "logOut": "Log out",
+  "@logOut": {
+    "description": "Side menu logout option",
+    "type": "text"
+  },
+  "services": "Services",
+  "@services": {
+    "description": "Services section title",
+    "type": "text"
+  },
+  "activity": "Activity",
+  "@activity": {
+    "description": "Side menu activity label",
+    "type": "text"
+  },
+  "messages": "Messages",
+  "@messages": {
+    "description": "Side menu messages option",
+    "type": "text"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Side menu settings option",
+    "type": "text"
+  },
+  "sendGift": "Send a gift",
+  "@sendGift": {
+    "description": "Side menu gift option",
+    "type": "text"
+  },
+  "businessHub": "Business hub",
+  "@businessHub": {
+    "description": "Side menu business hub",
+    "type": "text"
+  },
+  "manageAddressAccount": "Manage Address account",
+  "@manageAddressAccount": {
+    "description": "Side menu manage account option",
+    "type": "text"
+  },
+  "ride": "Ride",
+  "@ride": {
+    "description": "Banner / card Ride service title",
+    "type": "text"
+  },
+  "deliver": "Deliver",
+  "@deliver": {
+    "description": "Banner / card Deliver service title",
+    "type": "text"
+  },
+  "airport": "Airport",
+  "@airport": {
+    "description": "Banner / card Airport service title",
+    "type": "text"
+  },
+  "bike": "Bike",
+  "@bike": {
+    "description": "Banner / card Bike service title",
+    "type": "text"
+  },
+  "safeYourTrip": "Travel safely",
+  "@safeYourTrip": {
+    "description": "Caption for Ride/Deliver/Airport services",
+    "type": "text"
+  },
+  "anywhereCityTrip": "Anywhere in the city",
+  "@anywhereCityTrip": {
+    "description": "Subtitle for Ride/Deliver/Bike",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "City or intercity trip",
+  "@cityOrIntercityTrip": {
+    "description": "Subtitle for Airport service",
+    "type": "text"
+  },
+  "fastAndSafe": "Fast and safe",
+  "@fastAndSafe": {
+    "description": "Caption for Bike service",
+    "type": "text"
+  },
+  "passengerServices": "Passenger ",
+  "@passengerServices": {
+    "description": "HCard passenger services title",
+    "type": "text"
+  },
+  "cargoServices": "Cargo & Freight",
+  "@cargoServices": {
+    "description": "Cargo services title",
+    "type": "text"
+  },
+  "foodServices": "Food & Groceries",
+  "@foodServices": {
+    "description": "Food services title",
+    "type": "text"
+  },
+  "generalServices": "General ",
+  "@generalServices": {
+    "description": "General services title",
+    "type": "text"
+  },
+  "repairServices": "Repair & Parts",
+  "@repairServices": {
+    "description": "Repair services title",
+    "type": "text"
+  },
+  "insuranceServices": "Insurance",
+  "@insuranceServices": {
+    "description": "Insurance services title",
+    "type": "text"
+  },
+  "comingSoon": "This section is coming soon.",
+  "logoutConfirmTitle": "Log out",
+  "logoutConfirmMessage": "Do you want to log out of your account?",
+  "cancel": "Cancel",
+  "confirm": "Log out",
+  "addressUser": "Address user"
+}

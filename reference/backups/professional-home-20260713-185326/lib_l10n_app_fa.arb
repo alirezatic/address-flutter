@@ -1,0 +1,112 @@
+{
+    "@@locale":  "fa",
+    "appTitle":  "سوپر اپ",
+    "home":  "خانه",
+    "phoneNumber":  "شماره موبایل",
+    "continueLabel":  "ادامه",
+    "retry":  "تلاش مجدد",
+    "unknownError":  "خطای ناشناختهای رخ داد",
+    "getStarted":  "شروع",
+    "changeLanguage":  "تغییر زبان",
+    "onboardingSubtitle":  "رفتوآمد خرید توزیع و خدمات روزمره را سادهتر تجربه کنید.",
+    "onboardingTitle":  "همه خدمات شهر در یک آدرس",
+    "login":  "ورود",
+    "@login":  {
+                   "description":  "عنوان صفحه ورود",
+                   "type":  "text"
+               },
+    "welcome":  "خوش آمدید",
+    "@welcome":  {
+                     "description":  "پیام خوش‌آمدگویی",
+                     "type":  "text"
+                 },
+    "enteryourmobilenumber":  "شماره موبایل خود را وارد کنید",
+    "@enteryourmobilenumber":  {
+                                   "description":  "راهنما برای وارد کردن شماره موبایل",
+                                   "type":  "text"
+                               },
+    "mobileNumber":  "شماره موبایل",
+    "@mobileNumber":  {
+                          "description":  "برچسب فیلد شماره موبایل",
+                          "type":  "text"
+                      },
+    "enterMobileError":  "لطفاً شماره موبایل خود را وارد کنید",
+    "@enterMobileError":  {
+                              "description":  "خطا زمانی که فیلد شماره موبایل خالی است",
+                              "type":  "text"
+                          },
+    "notDigits":  "شماره موبایل باید فقط شامل اعداد باشد",
+    "@notDigits":  {
+                       "description":  "خطا زمانی که شماره شامل کاراکتر غیر عددی است",
+                       "type":  "text"
+                   },
+    "invalidPrefix":  "شماره موبایل باید با «09» یا «9» شروع شود",
+    "@invalidPrefix":  {
+                           "description":  "خطا در صورتی که شماره موبایل با پیشوند مجاز شروع نشده باشد",
+                           "type":  "text"
+                       },
+    "enterMobileErrorWithZero":  "شماره موبایل باید ۱۱ رقم باشد (با صفر در ابتدای آن)",
+    "@enterMobileErrorWithZero":  {
+                                      "description":  "خطا وقتی شماره با 0 شروع می‌شود اما طول اشتباه است",
+                                      "type":  "text"
+                                  },
+    "enterMobileErrorWithoutZero":  "شماره موبایل باید ۱۰ رقم باشد (بدون صفر در ابتدای آن)",
+    "@enterMobileErrorWithoutZero":  {
+                                         "description":  "خطا وقتی شماره بدون صفر شروع می‌شود اما طول اشتباه است",
+                                         "type":  "text"
+                                     },
+    "tooShort":  "شماره واردشده خیلی کوتاه است",
+    "@tooShort":  {
+                      "description":  "خطا زمانی که شماره موبایل بسیار کوتاه است",
+                      "type":  "text"
+                  },
+    "networkError":  "خطای شبکه، لطفاً اتصال خود را بررسی کنید",
+    "@networkError":  {
+                          "description":  "خطا در صورت وجود مشکل شبکه",
+                          "type":  "text"
+                      },
+    "enterOtpCode":  "کد پنج‌رقمی ارسال‌شده به {phoneNumber} را وارد کنید",
+    "@enterOtpCode":  {
+                          "description":  "راهنمای وارد کردن کد تأیید",
+                          "type":  "text",
+                          "placeholders":  {
+                                               "phoneNumber":  {
+                                                                   "example":  "+989123456789"
+                                                               }
+                                           }
+                      },
+    "didNotReceiveCode":  "کد را دریافت نکردم (۰۰:{seconds})",
+    "@didNotReceiveCode":  {
+                               "description":  "متن برای عدم دریافت کد همراه با شمارش معکوس",
+                               "placeholders":  {
+                                                    "seconds":  {
+                                                                    "example":  "30"
+                                                                }
+                                                }
+                           },
+    "resendCode":  "ارسال مجدد کد",
+    "@resendCode":  {
+                        "description":  "برچسب دکمه ارسال دوباره کد",
+                        "type":  "text"
+                    },
+    "changeNumber":  "تغییر شماره",
+    "@changeNumber":  {
+                          "description":  "دکمه تغییر شماره موبایل",
+                          "type":  "text"
+                      },
+    "or":  "یا",
+    "@or":  {
+                "description":  "جداکننده بین گزینه‌ها",
+                "type":  "text"
+            },
+    "email":  "ایمیل",
+    "@email":  {
+                   "description":  "برچسب فیلد ایمیل",
+                   "type":  "text"
+               },
+    "enterFullOtpCode":  "کد ۵ رقمی را کامل وارد کنید",
+    "@enterFullOtpCode":  {
+                              "description":  "Error shown when the entered OTP code is less than 5 digits",
+                              "type":  "text"
+                          }
+}

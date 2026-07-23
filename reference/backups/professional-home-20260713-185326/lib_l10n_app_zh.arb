@@ -1,0 +1,112 @@
+{
+    "@@locale":  "zh",
+    "appTitle":  "超级应用",
+    "home":  "首页",
+    "phoneNumber":  "手机号码",
+    "continueLabel":  "继续",
+    "retry":  "重试",
+    "unknownError":  "发生未知错误",
+    "getStarted":  "开始",
+    "changeLanguage":  "更改语言",
+    "onboardingSubtitle":  "更轻松地使用出行、购物、配送和日常服务。",
+    "onboardingTitle":  "城市服务，尽在一个地址",
+    "login":  "登录",
+    "@login":  {
+                   "description":  "登录页面标题",
+                   "type":  "text"
+               },
+    "welcome":  "欢迎",
+    "@welcome":  {
+                     "description":  "欢迎消息",
+                     "type":  "text"
+                 },
+    "enteryourmobilenumber":  "请输入您的手机号码",
+    "@enteryourmobilenumber":  {
+                                   "description":  "输入手机号码的提示",
+                                   "type":  "text"
+                               },
+    "mobileNumber":  "手机号码",
+    "@mobileNumber":  {
+                          "description":  "手机号码字段标签",
+                          "type":  "text"
+                      },
+    "enterMobileError":  "请输入手机号码",
+    "@enterMobileError":  {
+                              "description":  "手机号码为空时的错误提示",
+                              "type":  "text"
+                          },
+    "notDigits":  "手机号码只能包含数字",
+    "@notDigits":  {
+                       "description":  "当手机号码包含非数字字符时错误提示",
+                       "type":  "text"
+                   },
+    "invalidPrefix":  "手机号码必须以“09”或“9”开头",
+    "@invalidPrefix":  {
+                           "description":  "手机号码前缀不正确时的错误提示",
+                           "type":  "text"
+                       },
+    "enterMobileErrorWithZero":  "手机号码应为11位（以0开头）",
+    "@enterMobileErrorWithZero":  {
+                                      "description":  "以0开头但长度不正确时的错误提示",
+                                      "type":  "text"
+                                  },
+    "enterMobileErrorWithoutZero":  "手机号码应为10位（不以0开头）",
+    "@enterMobileErrorWithoutZero":  {
+                                         "description":  "不以0开头且长度不正确时的错误提示",
+                                         "type":  "text"
+                                     },
+    "tooShort":  "手机号码过短",
+    "@tooShort":  {
+                      "description":  "手机号码太短时的错误提示",
+                      "type":  "text"
+                  },
+    "networkError":  "网络错误，请检查您的连接",
+    "@networkError":  {
+                          "description":  "网络连接问题时的错误提示",
+                          "type":  "text"
+                      },
+    "enterOtpCode":  "请输入发送到 {phoneNumber} 的五位验证码",
+    "@enterOtpCode":  {
+                          "description":  "输入验证码的提示",
+                          "type":  "text",
+                          "placeholders":  {
+                                               "phoneNumber":  {
+                                                                   "example":  "+989123456789"
+                                                               }
+                                           }
+                      },
+    "didNotReceiveCode":  "未收到验证码 (00:{seconds})",
+    "@didNotReceiveCode":  {
+                               "description":  "未收到验证码文字带倒计时秒数",
+                               "placeholders":  {
+                                                    "seconds":  {
+                                                                    "example":  "30"
+                                                                }
+                                                }
+                           },
+    "resendCode":  "重新发送验证码",
+    "@resendCode":  {
+                        "description":  "重新发送验证码按钮标签",
+                        "type":  "text"
+                    },
+    "changeNumber":  "更改号码",
+    "@changeNumber":  {
+                          "description":  "更改手机号码按钮",
+                          "type":  "text"
+                      },
+    "or":  "或",
+    "@or":  {
+                "description":  "选项之间的分隔",
+                "type":  "text"
+            },
+    "email":  "电子邮件",
+    "@email":  {
+                   "description":  "电子邮件字段标签",
+                   "type":  "text"
+               },
+    "enterFullOtpCode":  "请输入完整的5位数字代码",
+    "@enterFullOtpCode":  {
+                              "description":  "Error shown when the entered OTP code is less than 5 digits",
+                              "type":  "text"
+                          }
+}

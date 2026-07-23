@@ -1,0 +1,41 @@
+import 'package:flutter/services.dart';
+
+extension StringNumberExtensions on String {
+  // تبدیل اعداد انگلیسی به فارسی (برای نمایش در UI)
+  String toPersianDigit() {
+    const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    String text = this;
+    for (int i = 0; i < english.length; i++) {
+      text = text.replaceAll(english[i], persian[i]);
+    }
+    return text;
+  }
+
+  // تبدیل اعداد فارسی/عربی به انگلیسی (برای پردازش در بک‌اند و لاجیک)
+  String toEnglishDigit() {
+    const persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    String text = this;
+    for (int i = 0; i < english.length; i++) {
+      text = text.replaceAll(persian[i], english[i]);
+      text = text.replaceAll(arabic[i], english[i]);
+    }
+    return text;
+  }
+}
+
+// کلاسی برای تبدیل در لحظه اعداد هنگام تایپ کاربر
+class PersianDigitFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    return TextEditingValue(
+      text: newValue.text.toPersianDigit(),
+      selection: newValue.selection,
+    );
+  }
+}

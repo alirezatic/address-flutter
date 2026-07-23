@@ -1,0 +1,453 @@
+{
+    "@@locale": "zh",
+    "login": "登录",
+    "@login": {
+        "description": "登录页面标题",
+        "type": "text"
+    },
+    "welcome": "欢迎",
+    "@welcome": {
+        "description": "欢迎消息",
+        "type": "text"
+    },
+    "enteryourmobilenumber": "请输入您的手机号码",
+    "@enteryourmobilenumber": {
+        "description": "输入手机号码的提示",
+        "type": "text"
+    },
+    "mobileNumber": "手机号码",
+    "@mobileNumber": {
+        "description": "手机号码字段标签",
+        "type": "text"
+    },
+    "enterMobileError": "请输入手机号码",
+    "@enterMobileError": {
+        "description": "手机号码为空时的错误提示",
+        "type": "text"
+    },
+    "notDigits": "手机号码只能包含数字",
+    "@notDigits": {
+        "description": "当手机号码包含非数字字符时错误提示",
+        "type": "text"
+    },
+    "invalidPrefix": "手机号码必须以“09”或“9”开头",
+    "@invalidPrefix": {
+        "description": "手机号码前缀不正确时的错误提示",
+        "type": "text"
+    },
+    "enterMobileErrorWithZero": "手机号码应为11位（以0开头）",
+    "@enterMobileErrorWithZero": {
+        "description": "以0开头但长度不正确时的错误提示",
+        "type": "text"
+    },
+    "enterMobileErrorWithoutZero": "手机号码应为10位（不以0开头）",
+    "@enterMobileErrorWithoutZero": {
+        "description": "不以0开头且长度不正确时的错误提示",
+        "type": "text"
+    },
+    "tooShort": "手机号码过短",
+    "@tooShort": {
+        "description": "手机号码太短时的错误提示",
+        "type": "text"
+    },
+    "networkError": "网络错误，请检查您的连接",
+    "@networkError": {
+        "description": "网络连接问题时的错误提示",
+        "type": "text"
+    },
+    "enterOtpCode": "请输入发送到 {phoneNumber} 的五位验证码",
+    "@enterOtpCode": {
+        "description": "输入验证码的提示",
+        "type": "text",
+        "placeholders": {
+            "phoneNumber": {
+                "example": "+989123456789"
+            }
+        }
+    },
+    "otpInvalid": "验证码必须是5位数字",
+    "@otpInvalid": {
+        "description": "验证码无效或位数不够时的错误提示",
+        "type": "text"
+    },
+    "didNotReceiveCode": "未收到验证码 (00:{seconds})",
+    "@didNotReceiveCode": {
+        "description": "未收到验证码文字带倒计时秒数",
+        "placeholders": {
+            "seconds": {
+                "example": "30"
+            }
+        }
+    },
+    "didNotReceiveCodeWithoutTimer": "未收到验证码",
+    "@didNotReceiveCodeWithoutTimer": {
+        "description": "未收到验证码（无倒计时）文本"
+    },
+    "changeNumber": "更改号码",
+    "@changeNumber": {
+        "description": "更改手机号码按钮",
+        "type": "text"
+    },
+    "or": "或",
+    "@or": {
+        "description": "选项之间的分隔",
+        "type": "text"
+    },
+    "language": "语言",
+    "@language": {
+        "description": "语言一词",
+        "type": "text"
+    },
+    "changeLanguage": "切换语言",
+    "@changeLanguage": {
+        "description": "侧边菜单语言切换选项",
+        "type": "text"
+    },
+    "logOut": "注销",
+    "@logOut": {
+        "description": "侧边菜单注销选项",
+        "type": "text"
+    },
+    "services": "服务",
+    "@services": {
+        "description": "服务章节标题",
+        "type": "text"
+    },
+    "browse": "浏览",
+    "@browse": {
+        "description": "侧边菜单浏览选项",
+        "type": "text"
+    },
+    "activity": "活动",
+    "@activity": {
+        "description": "菜单中的活动标签",
+        "type": "text"
+    },
+    "messages": "消息",
+    "@messages": {
+        "description": "侧边菜单消息选项",
+        "type": "text"
+    },
+    "settings": "设置",
+    "@settings": {
+        "description": "侧边菜单设置选项",
+        "type": "text"
+    },
+    "sendGift": "发送礼物",
+    "@sendGift": {
+        "description": "侧边菜单礼物选项",
+        "type": "text"
+    },
+    "earnByDrivingOrDelivering": "通过驾驶或送货赚取收益",
+    "@earnByDrivingOrDelivering": {
+        "description": "通过驾驶或送货赚钱的选项",
+        "type": "text"
+    },
+    "businessHub": "商务中心",
+    "@businessHub": {
+        "description": "菜单中的商务中心选项",
+        "type": "text"
+    },
+    "referFriendsUnlockDeals": "邀请好友获得专属优惠",
+    "@referFriendsUnlockDeals": {
+        "description": "邀请好友选项",
+        "type": "text"
+    },
+    "manageAddressAccount": "管理账户和地址",
+    "@manageAddressAccount": {
+        "description": "管理账户的选项",
+        "type": "text"
+    },
+    "ride": "出行",
+    "@ride": {
+        "description": "出行服务标题",
+        "type": "text"
+    },
+    "deliver": "配送",
+    "@deliver": {
+        "description": "配送服务标题",
+        "type": "text"
+    },
+    "airport": "机场",
+    "@airport": {
+        "description": "机场服务标题",
+        "type": "text"
+    },
+    "bike": "摩托车",
+    "@bike": {
+        "description": "摩托车服务标题",
+        "type": "text"
+    },
+    "safeYourTrip": "保障您的旅程",
+    "@safeYourTrip": {
+        "description": "运输服务副标题",
+        "type": "text"
+    },
+    "anywhereCityTrip": "市内任意地点",
+    "@anywhereCityTrip": {
+        "description": "城市服务副标题",
+        "type": "text"
+    },
+    "cityOrIntercityTrip": "市内或城际行程",
+    "@cityOrIntercityTrip": {
+        "description": "机场服务副标题",
+        "type": "text"
+    },
+    "fastAndSafe": "快速且安全",
+    "@fastAndSafe": {
+        "description": "摩托车服务副标题",
+        "type": "text"
+    },
+    "passengerServices": "乘客服务",
+    "@passengerServices": {
+        "description": "乘客服务标题",
+        "type": "text"
+    },
+    "cargoServices": "货运服务",
+    "@cargoServices": {
+        "description": "货运服务标题",
+        "type": "text"
+    },
+    "foodServices": "餐饮服务",
+    "@foodServices": {
+        "description": "餐饮服务标题",
+        "type": "text"
+    },
+    "generalServices": "综合服务",
+    "@generalServices": {
+        "description": "综合服务标题",
+        "type": "text"
+    },
+    "repairServices": "维修与配件",
+    "@repairServices": {
+        "description": "维修服务标题",
+        "type": "text"
+    },
+    "insuranceServices": "保险服务",
+    "@insuranceServices": {
+        "description": "保险服务标题",
+        "type": "text"
+    },
+    "cityAndRoad": "城市与道路",
+    "@cityAndRoad": {
+        "description": "服务部分子标题",
+        "type": "text"
+    },
+    "page1": "第1页",
+    "@page1": {
+        "description": "第1页导航",
+        "type": "text"
+    },
+    "page2": "第2页",
+    "@page2": {
+        "description": "第2页导航",
+        "type": "text"
+    },
+    "page3": "第3页",
+    "@page3": {
+        "description": "第3页导航",
+        "type": "text"
+    },
+    "page4": "第4页",
+    "@page4": {
+        "description": "第4页导航",
+        "type": "text"
+    },
+    "whereTo": "去哪儿？",
+    "@whereTo": {
+        "description": "目的地搜索文本",
+        "type": "text"
+    },
+    "appName": "地址",
+    "@appName": {
+        "description": "应用程序名称栏",
+        "type": "text"
+    },
+    "sampleAddress": "第二街，33号",
+    "@sampleAddress": {
+        "description": "活动列表中的示例地址",
+        "type": "text"
+    },
+    "samplePrice": "150,000",
+    "@samplePrice": {
+        "description": "示例价格或旅行时间",
+        "type": "text"
+    },
+    "name": "姓名",
+    "@name": {
+        "description": "全名字段标签",
+        "type": "text"
+    },
+    "email": "电子邮件",
+    "@email": {
+        "description": "电子邮件字段标签",
+        "type": "text"
+    },
+    "selectVehicleType": "选择车辆类型",
+    "@selectVehicleType": {
+        "description": "车辆类型选择标题",
+        "type": "text"
+    },
+    "mini": "迷你",
+    "@mini": {
+        "description": "小型车选项",
+        "type": "text"
+    },
+    "sedan": "轿车",
+    "@sedan": {
+        "description": "轿车选项",
+        "type": "text"
+    },
+    "suv": "运动型多用途车",
+    "@suv": {
+        "description": "SUV选项",
+        "type": "text"
+    },
+    "customer": "客户",
+    "@customer": {
+        "description": "用户类型客户选项",
+        "type": "text"
+    },
+    "partner": "合作伙伴",
+    "@partner": {
+        "description": "用户类型司机或合作伙伴选项",
+        "type": "text"
+    },
+    "vehicleBrandName": "车辆品牌",
+    "@vehicleBrandName": {
+        "description": "车辆品牌字段标签",
+        "type": "text"
+    },
+    "vehicleModel": "车辆型号",
+    "@vehicleModel": {
+        "description": "车辆型号字段标签",
+        "type": "text"
+    },
+    "vehicleType": "车辆类型",
+    "@vehicleType": {
+        "description": "车辆类型字段标签",
+        "type": "text"
+    },
+    "vehicleRegistrationNumber": "车辆注册号",
+    "@vehicleRegistrationNumber": {
+        "description": "车辆注册号字段标签",
+        "type": "text"
+    },
+    "drivingLicenseNumber": "驾驶证号码",
+    "@drivingLicenseNumber": {
+        "description": "驾驶证号码字段标签",
+        "type": "text"
+    },
+    "continueAs": "以 {userType} 身份继续",
+    "@continueAs": {
+        "description": "根据选定用户类型继续按钮",
+        "type": "text",
+        "placeholders": {
+            "userType": {
+                "example": "客户"
+            }
+        }
+    },
+    "request": "请求",
+    "@request": {
+        "description": "请求服务按钮",
+        "type": "text"
+    },
+    "mapLoading": "地图加载中...",
+    "@mapLoading": {
+        "description": "加载地图时文本",
+        "type": "text"
+    },
+    "taxi": "出租车",
+    "@taxi": {
+        "description": "出租车服务标题",
+        "type": "text"
+    },
+    "sharetaxi": "共享出租车",
+    "@sharetaxi": {
+        "description": "共享出租车服务标题",
+        "type": "text"
+    },
+    "citytocity": "城市间",
+    "@citytocity": {
+        "description": "城市间服务标题",
+        "type": "text"
+    },
+    "bus": "公交车",
+    "@bus": {
+        "description": "公交车服务标题",
+        "type": "text"
+    },
+    "train": "火车",
+    "@train": {
+        "description": "火车服务标题",
+        "type": "text"
+    },
+    "airPlane": "飞机",
+    "@airPlane": {
+        "description": "航空服务标题",
+        "type": "text"
+    },
+    "findRide": "查找行程",
+    "@findRide": {
+        "description": "查找行程文本",
+        "type": "text"
+    },
+    "findoffroadtaxi": "查找城际出租车",
+    "@findoffroadtaxi": {
+        "description": "查找城际出租车文本",
+        "type": "text"
+    },
+    "busTicket": "公交票",
+    "@busTicket": {
+        "description": "公交票文本",
+        "type": "text"
+    },
+    "trainTicket": "火车票",
+    "@trainTicket": {
+        "description": "火车票文本",
+        "type": "text"
+    },
+    "airplaneTicket": "飞机票",
+    "@airplaneTicket": {
+        "description": "飞机票文本",
+        "type": "text"
+    },
+    "otpTitle": "手机号验证",
+    "@otpTitle": {
+        "description": "手机号验证页面标题",
+        "type": "text"
+    },
+    "otpSentTo": "验证码已发送到 {phone}",
+    "@otpSentTo": {
+        "description": "显示发送验证码手机号",
+        "placeholders": {
+            "phone": {}
+        },
+        "type": "text"
+    },
+    "resendCode": "重新发送验证码",
+    "@resendCode": {
+        "description": "重新发送验证码按钮标签",
+        "type": "text"
+    },
+    "pickupLocation": "上车地点",
+    "@pickupLocation": {
+        "description": "选择乘客上车地点标签",
+        "type": "text"
+    },
+    "wherefrom": "从哪里？",
+    "@wherefrom": {
+        "description": "旅行出发地点问题",
+        "type": "text"
+    },
+    "enterFullOtpCode": "请输入完整的5位数字代码",
+    "@enterFullOtpCode": {
+        "description": "Error shown when the entered OTP code is less than 5 digits",
+        "type": "text"
+    },
+    "invalidOtpCode": "输入的验证码不正确",
+    "@invalidOtpCode": {
+        "type": "text"
+    }
+}

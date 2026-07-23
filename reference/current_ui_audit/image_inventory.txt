@@ -1,0 +1,33 @@
+﻿
+FullName                                                                               Length
+--------                                                                               ------
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\Delivery.png      23063
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\image1.png        74003
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\image2.png       105968
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\image3.png        87305
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images 6.png      91924
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images 7.png      88739
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images4.png       52277
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images5.png       86545
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images8.png       92966
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\images9.png       69708
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\map.png          542758
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\address\Taxi.png        1515670
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\avatars\icon_email.png     1066
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\avatars\icon_lock.png      1242
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\avatars\logo_apple.png     1453
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\avatars\logo_email.png     1128
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\avatars\logo_google.png    2124
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\background\spline.png    203452
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\logo\address.png          56823
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\logo\address1.png         38074
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\logo\Brand.png             9750
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Airport.png      67090
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Bike.png         72162
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Carseat.png      71805
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Eco.png          59300
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Lux.png          58320
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Minibus.png      84560
+C:\users\htica\desktop\alireza\address_clean_v1\assets\images\vehicles\Pet.png          53615
+
+

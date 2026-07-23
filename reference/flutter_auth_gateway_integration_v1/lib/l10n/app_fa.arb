@@ -1,0 +1,248 @@
+{
+  "@@locale": "fa",
+  "appTitle": "سوپر اپ",
+  "home": "خانه",
+  "phoneNumber": "شماره موبایل",
+  "continueLabel": "ادامه",
+  "retry": "تلاش مجدد",
+  "unknownError": "خطای ناشناختهای رخ داد",
+  "getStarted": "شروع",
+  "changeLanguage": "تغییر زبان",
+  "onboardingSubtitle": "رفتوآمد خرید توزیع و خدمات روزمره را سادهتر تجربه کنید.",
+  "onboardingTitle": "همه خدمات شهر در یک آدرس",
+  "login": "ورود",
+  "@login": {
+    "description": "عنوان صفحه ورود",
+    "type": "text"
+  },
+  "welcome": "خوش آمدید",
+  "@welcome": {
+    "description": "پیام خوش‌آمدگویی",
+    "type": "text"
+  },
+  "enteryourmobilenumber": "شماره موبایل خود را وارد کنید",
+  "@enteryourmobilenumber": {
+    "description": "راهنما برای وارد کردن شماره موبایل",
+    "type": "text"
+  },
+  "mobileNumber": "شماره موبایل",
+  "@mobileNumber": {
+    "description": "برچسب فیلد شماره موبایل",
+    "type": "text"
+  },
+  "enterMobileError": "لطفاً شماره موبایل خود را وارد کنید",
+  "@enterMobileError": {
+    "description": "خطا زمانی که فیلد شماره موبایل خالی است",
+    "type": "text"
+  },
+  "notDigits": "شماره موبایل باید فقط شامل اعداد باشد",
+  "@notDigits": {
+    "description": "خطا زمانی که شماره شامل کاراکتر غیر عددی است",
+    "type": "text"
+  },
+  "invalidPrefix": "شماره موبایل باید با «09» یا «9» شروع شود",
+  "@invalidPrefix": {
+    "description": "خطا در صورتی که شماره موبایل با پیشوند مجاز شروع نشده باشد",
+    "type": "text"
+  },
+  "enterMobileErrorWithZero": "شماره موبایل باید ۱۱ رقم باشد (با صفر در ابتدای آن)",
+  "@enterMobileErrorWithZero": {
+    "description": "خطا وقتی شماره با 0 شروع می‌شود اما طول اشتباه است",
+    "type": "text"
+  },
+  "enterMobileErrorWithoutZero": "شماره موبایل باید ۱۰ رقم باشد (بدون صفر در ابتدای آن)",
+  "@enterMobileErrorWithoutZero": {
+    "description": "خطا وقتی شماره بدون صفر شروع می‌شود اما طول اشتباه است",
+    "type": "text"
+  },
+  "tooShort": "شماره واردشده خیلی کوتاه است",
+  "@tooShort": {
+    "description": "خطا زمانی که شماره موبایل بسیار کوتاه است",
+    "type": "text"
+  },
+  "networkError": "خطای شبکه، لطفاً اتصال خود را بررسی کنید",
+  "@networkError": {
+    "description": "خطا در صورت وجود مشکل شبکه",
+    "type": "text"
+  },
+  "enterOtpCode": "کد پنج‌رقمی ارسال‌شده به {phoneNumber} را وارد کنید",
+  "@enterOtpCode": {
+    "description": "راهنمای وارد کردن کد تأیید",
+    "type": "text",
+    "placeholders": {
+      "phoneNumber": {
+        "example": "+989123456789"
+      }
+    }
+  },
+  "didNotReceiveCode": "کد را دریافت نکردم (۰۰:{seconds})",
+  "@didNotReceiveCode": {
+    "description": "متن برای عدم دریافت کد همراه با شمارش معکوس",
+    "placeholders": {
+      "seconds": {
+        "example": "30"
+      }
+    }
+  },
+  "resendCode": "ارسال مجدد کد",
+  "@resendCode": {
+    "description": "برچسب دکمه ارسال دوباره کد",
+    "type": "text"
+  },
+  "changeNumber": "تغییر شماره",
+  "@changeNumber": {
+    "description": "دکمه تغییر شماره موبایل",
+    "type": "text"
+  },
+  "or": "یا",
+  "@or": {
+    "description": "جداکننده بین گزینه‌ها",
+    "type": "text"
+  },
+  "email": "ایمیل",
+  "@email": {
+    "description": "برچسب فیلد ایمیل",
+    "type": "text"
+  },
+  "enterFullOtpCode": "لطفاً کد ۶ رقمی را کامل وارد کنید",
+  "@enterFullOtpCode": {
+    "description": "Error shown when the entered OTP code is less than 5 digits",
+    "type": "text"
+  },
+  "invalidOtpCode": "کد تأیید واردشده نادرست است",
+  "@invalidOtpCode": {
+    "description": "Message shown when OTP verification fails",
+    "type": "text"
+  },
+  "expiredOtpCode": "کد تأیید منقضی شده است؛ کد جدید دریافت کنید",
+  "@expiredOtpCode": {
+    "description": "Message shown when OTP challenge is expired",
+    "type": "text"
+  },
+  "otpRequestTooSoon": "لطفاً برای دریافت دوباره کد کمی صبر کنید",
+  "@otpRequestTooSoon": {
+    "description": "Message shown when OTP resend cooldown is active",
+    "type": "text"
+  },
+  "language": "زبان",
+  "@language": {
+    "description": "واژه برای زبان",
+    "type": "text"
+  },
+  "logOut": "خروج از حساب",
+  "@logOut": {
+    "description": "گزینه خروج در منوی کناری",
+    "type": "text"
+  },
+  "services": "خدمات",
+  "@services": {
+    "description": "عنوان بخش خدمات",
+    "type": "text"
+  },
+  "activity": "فعالیت‌ها",
+  "@activity": {
+    "description": "برچسب فعالیت‌ها در منو",
+    "type": "text"
+  },
+  "messages": "پیام‌ها",
+  "@messages": {
+    "description": "گزینه پیام‌ها در منوی کناری",
+    "type": "text"
+  },
+  "settings": "تنظیمات",
+  "@settings": {
+    "description": "گزینه تنظیمات در منوی کناری",
+    "type": "text"
+  },
+  "sendGift": "ارسال هدیه",
+  "@sendGift": {
+    "description": "گزینه هدیه در منوی کناری",
+    "type": "text"
+  },
+  "businessHub": "مرکز کسب‌وکار",
+  "@businessHub": {
+    "description": "گزینه مرکز کسب‌وکار در منو",
+    "type": "text"
+  },
+  "manageAddressAccount": "مدیریت حساب آدرس",
+  "@manageAddressAccount": {
+    "description": "گزینه مدیریت حساب کاربری",
+    "type": "text"
+  },
+  "ride": "سفر",
+  "@ride": {
+    "description": "عنوان سرویس سفر",
+    "type": "text"
+  },
+  "deliver": "تحویل",
+  "@deliver": {
+    "description": "عنوان سرویس تحویل",
+    "type": "text"
+  },
+  "airport": "فرودگاه",
+  "@airport": {
+    "description": "عنوان سرویس فرودگاهی",
+    "type": "text"
+  },
+  "bike": "موتور",
+  "@bike": {
+    "description": "عنوان سرویس موتورسیکلت",
+    "type": "text"
+  },
+  "safeYourTrip": "سفر ایمن",
+  "@safeYourTrip": {
+    "description": "زیرنویس سرویس‌های حمل‌ونقل",
+    "type": "text"
+  },
+  "anywhereCityTrip": "هرکجا در شهر",
+  "@anywhereCityTrip": {
+    "description": "زیرنویس سرویس شهری",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "سفر شهری یا بین‌شهری",
+  "@cityOrIntercityTrip": {
+    "description": "زیرنویس سرویس فرودگاه",
+    "type": "text"
+  },
+  "fastAndSafe": "سریع و ایمن",
+  "@fastAndSafe": {
+    "description": "زیرنویس سرویس موتورسیکلت",
+    "type": "text"
+  },
+  "passengerServices": " سفر",
+  "@passengerServices": {
+    "description": "عنوان خدمات مسافرتی",
+    "type": "text"
+  },
+  "cargoServices": "بارو کالا",
+  "@cargoServices": {
+    "description": "عنوان خدمات باربری",
+    "type": "text"
+  },
+  "foodServices": "غذاوفروشگاه",
+  "@foodServices": {
+    "description": "عنوان خدمات غذایی",
+    "type": "text"
+  },
+  "generalServices": " عمومی",
+  "@generalServices": {
+    "description": "عنوان خدمات عمومی",
+    "type": "text"
+  },
+  "repairServices": "تعمیر و قطعات یدکی",
+  "@repairServices": {
+    "description": "عنوان خدمات تعمیرات",
+    "type": "text"
+  },
+  "insuranceServices": "بیمه",
+  "@insuranceServices": {
+    "description": "عنوان خدمات بیمه‌ای",
+    "type": "text"
+  },
+  "comingSoon": "این بخش به‌زودی فعال می‌شود.",
+  "logoutConfirmTitle": "خروج از حساب",
+  "logoutConfirmMessage": "آیا می‌خواهید از حساب کاربری خارج شوید؟",
+  "cancel": "انصراف",
+  "confirm": "خروج",
+  "addressUser": "کاربر آدرس"
+}

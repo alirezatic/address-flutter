@@ -1,0 +1,124 @@
+import 'dart:ui';
+import 'package:flutter/material.dart';
+
+@immutable
+class AppDesignTokens extends ThemeExtension<AppDesignTokens> {
+  // Spacing
+  final double spaceXS, spaceS, spaceM, spaceL, spaceXL, spaceXXL;
+  // Radius
+  final double radiusS, radiusM, radiusL, radiusXL, radiusFull;
+  // Elevation
+  final double elevationS, elevationM, elevationL;
+  // Icon sizes
+  final double iconS, iconM, iconL, iconXL;
+  // Border
+  final double borderWidth;
+  // Motion
+  final Duration durationFast, durationNormal, durationSlow;
+
+  const AppDesignTokens({
+    this.spaceXS = 4.0,
+    this.spaceS = 8.0,
+    this.spaceM = 12.0,
+    this.spaceL = 16.0,
+    this.spaceXL = 24.0,
+    this.spaceXXL = 32.0,
+    this.radiusS = 4.0,
+    this.radiusM = 8.0,
+    this.radiusL = 12.0,
+    this.radiusXL = 16.0,
+    this.radiusFull = 999.0,
+    this.elevationS = 1.0,
+    this.elevationM = 3.0,
+    this.elevationL = 6.0,
+    this.iconS = 16.0,
+    this.iconM = 24.0,
+    this.iconL = 32.0,
+    this.iconXL = 40.0,
+    this.borderWidth = 1.0,
+    this.durationFast = const Duration(milliseconds: 150),
+    this.durationNormal = const Duration(milliseconds: 300),
+    this.durationSlow = const Duration(milliseconds: 500),
+  });
+
+  @override
+  AppDesignTokens copyWith({
+    double? spaceXS,
+    double? spaceS,
+    double? spaceM,
+    double? spaceL,
+    double? spaceXL,
+    double? spaceXXL,
+    double? radiusS,
+    double? radiusM,
+    double? radiusL,
+    double? radiusXL,
+    double? radiusFull,
+    double? elevationS,
+    double? elevationM,
+    double? elevationL,
+    double? iconS,
+    double? iconM,
+    double? iconL,
+    double? iconXL,
+    double? borderWidth,
+    Duration? durationFast,
+    Duration? durationNormal,
+    Duration? durationSlow,
+  }) {
+    return AppDesignTokens(
+      spaceXS: spaceXS ?? this.spaceXS,
+      spaceS: spaceS ?? this.spaceS,
+      spaceM: spaceM ?? this.spaceM,
+      spaceL: spaceL ?? this.spaceL,
+      spaceXL: spaceXL ?? this.spaceXL,
+      spaceXXL: spaceXXL ?? this.spaceXXL,
+      radiusS: radiusS ?? this.radiusS,
+      radiusM: radiusM ?? this.radiusM,
+      radiusL: radiusL ?? this.radiusL,
+      radiusXL: radiusXL ?? this.radiusXL,
+      radiusFull: radiusFull ?? this.radiusFull,
+      elevationS: elevationS ?? this.elevationS,
+      elevationM: elevationM ?? this.elevationM,
+      elevationL: elevationL ?? this.elevationL,
+      iconS: iconS ?? this.iconS,
+      iconM: iconM ?? this.iconM,
+      iconL: iconL ?? this.iconL,
+      iconXL: iconXL ?? this.iconXL,
+      borderWidth: borderWidth ?? this.borderWidth,
+      durationFast: durationFast ?? this.durationFast,
+      durationNormal: durationNormal ?? this.durationNormal,
+      durationSlow: durationSlow ?? this.durationSlow,
+    );
+  }
+
+  @override
+  AppDesignTokens lerp(ThemeExtension<AppDesignTokens>? other, double t) {
+    if (other is! AppDesignTokens) return this;
+    return AppDesignTokens(
+      spaceXS: lerpDouble(spaceXS, other.spaceXS, t)!,
+      spaceS: lerpDouble(spaceS, other.spaceS, t)!,
+      spaceM: lerpDouble(spaceM, other.spaceM, t)!,
+      spaceL: lerpDouble(spaceL, other.spaceL, t)!,
+      spaceXL: lerpDouble(spaceXL, other.spaceXL, t)!,
+      spaceXXL: lerpDouble(spaceXXL, other.spaceXXL, t)!,
+      radiusS: lerpDouble(radiusS, other.radiusS, t)!,
+      radiusM: lerpDouble(radiusM, other.radiusM, t)!,
+      radiusL: lerpDouble(radiusL, other.radiusL, t)!,
+      radiusXL: lerpDouble(radiusXL, other.radiusXL, t)!,
+      radiusFull: lerpDouble(radiusFull, other.radiusFull, t)!,
+      elevationS: lerpDouble(elevationS, other.elevationS, t)!,
+      elevationM: lerpDouble(elevationM, other.elevationM, t)!,
+      elevationL: lerpDouble(elevationL, other.elevationL, t)!,
+      iconS: lerpDouble(iconS, other.iconS, t)!,
+      iconM: lerpDouble(iconM, other.iconM, t)!,
+      iconL: lerpDouble(iconL, other.iconL, t)!,
+      iconXL: lerpDouble(iconXL, other.iconXL, t)!,
+      borderWidth: lerpDouble(borderWidth, other.borderWidth, t)!,
+      // برای Duration ها lerp مستقیم نداریم، معمولاً از t استفاده می‌شود:
+      durationFast: t < 0.5 ? durationFast : other.durationFast,
+      durationNormal: t < 0.5 ? durationNormal : other.durationNormal,
+      durationSlow: t < 0.5 ? durationSlow : other.durationSlow,
+    );
+  }
+}

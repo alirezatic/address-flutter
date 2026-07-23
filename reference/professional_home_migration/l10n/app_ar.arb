@@ -1,0 +1,124 @@
+{
+  "@@locale": "ar",
+  "language": "اللغة",
+  "@language": {
+    "description": "كلمة اللغة",
+    "type": "text"
+  },
+  "logOut": "تسجيل الخروج",
+  "@logOut": {
+    "description": "خيار تسجيل الخروج في القائمة الجانبية",
+    "type": "text"
+  },
+  "services": "الخدمات",
+  "@services": {
+    "description": "عنوان قسم الخدمات",
+    "type": "text"
+  },
+  "activity": "النشاطات",
+  "@activity": {
+    "description": "تسمية النشاطات في القائمة",
+    "type": "text"
+  },
+  "messages": "الرسائل",
+  "@messages": {
+    "description": "خيار الرسائل في القائمة الجانبية",
+    "type": "text"
+  },
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "خيار الإعدادات في القائمة الجانبية",
+    "type": "text"
+  },
+  "sendGift": "إرسال هدية",
+  "@sendGift": {
+    "description": "خيار الهدية في القائمة الجانبية",
+    "type": "text"
+  },
+  "businessHub": "مركز الأعمال",
+  "@businessHub": {
+    "description": "خيار مركز الأعمال في القائمة",
+    "type": "text"
+  },
+  "manageAddressAccount": "إدارة الحساب والعنوان",
+  "@manageAddressAccount": {
+    "description": "خيار إدارة الحساب",
+    "type": "text"
+  },
+  "ride": "الرحلة",
+  "@ride": {
+    "description": "عنوان خدمة الرحلات",
+    "type": "text"
+  },
+  "deliver": "التوصيل",
+  "@deliver": {
+    "description": "عنوان خدمة التوصيل",
+    "type": "text"
+  },
+  "airport": "المطار",
+  "@airport": {
+    "description": "عنوان خدمة المطار",
+    "type": "text"
+  },
+  "bike": "دراجة نارية",
+  "@bike": {
+    "description": "عنوان خدمة الدراجة النارية",
+    "type": "text"
+  },
+  "safeYourTrip": "أمّن رحلتك",
+  "@safeYourTrip": {
+    "description": "توضيح خدمات النقل",
+    "type": "text"
+  },
+  "anywhereCityTrip": "في أي مكان داخل المدينة",
+  "@anywhereCityTrip": {
+    "description": "توضيح خدمة مدينة",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "رحلة داخل المدينة أو بين المدن",
+  "@cityOrIntercityTrip": {
+    "description": "توضيح خدمة المطار",
+    "type": "text"
+  },
+  "fastAndSafe": "سريع وآمن",
+  "@fastAndSafe": {
+    "description": "توضيح خدمة الدراجة النارية",
+    "type": "text"
+  },
+  "passengerServices": "خدمات الركاب",
+  "@passengerServices": {
+    "description": "عنوان خدمات الركاب",
+    "type": "text"
+  },
+  "cargoServices": "خدمات الشحن",
+  "@cargoServices": {
+    "description": "عنوان خدمات الشحن",
+    "type": "text"
+  },
+  "foodServices": "خدمات الطعام",
+  "@foodServices": {
+    "description": "عنوان خدمات الطعام",
+    "type": "text"
+  },
+  "generalServices": "الخدمات العامة",
+  "@generalServices": {
+    "description": "عنوان الخدمات العامة",
+    "type": "text"
+  },
+  "repairServices": "خدمات الإصلاح وقطع الغيار",
+  "@repairServices": {
+    "description": "عنوان خدمات الإصلاح",
+    "type": "text"
+  },
+  "insuranceServices": "خدمات التأمين",
+  "@insuranceServices": {
+    "description": "عنوان خدمات التأمين",
+    "type": "text"
+  },
+  "comingSoon": "سيتم تفعيل هذا القسم قريبًا.",
+  "logoutConfirmTitle": "تسجيل الخروج",
+  "logoutConfirmMessage": "هل تريد تسجيل الخروج من حسابك؟",
+  "cancel": "إلغاء",
+  "confirm": "تسجيل الخروج",
+  "addressUser": "مستخدم عنوان"
+}

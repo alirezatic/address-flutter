@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+
+// تعریف انواع خطاهای اعتبارسنجی
+enum LoginError {
+  empty,
+  notDigits,
+  invalidPrefix,
+  invalidLength11,
+  invalidLength10,
+  tooShort,
+  networkError,
+}
+
+class LoginController extends ChangeNotifier {
+  bool isLoading = false;
+  LoginError? currentError;
+
+  // متد لاگین که در صورت موفقیت، شماره فرمت شده را برمی‌گرداند
+  Future<String?> validateAndLogin(
+    String rawPhone,
+    String countryDialCode,
+  ) async {
+    isLoading = true;
+    currentError = null;
+    notifyListeners();
+
+    try {
+      // 1. اعتبارسنجی
+      final error = _validate(rawPhone, countryDialCode);
+      if (error != null) {
+        currentError = error;
+        return null;
+      }
+
+      // 2. فرمت کردن شماره
+      String formattedPhone = rawPhone;
+      if (formattedPhone.startsWith('0')) {
+        formattedPhone = formattedPhone.substring(1);
+      }
+      final String fullPhoneNumber = "$countryDialCode$formattedPhone";
+
+      // 3. درخواست API برای ارسال کد OTP (شبیه‌سازی)
+      await Future.delayed(const Duration(seconds: 1));
+
+      return fullPhoneNumber; // موفقیت‌آمیز
+    } catch (e) {
+      currentError = LoginError.networkError;
+      return null;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  // متد خصوصی برای بررسی قوانین شماره موبایل
+  LoginError? _validate(String phone, String dialCode) {
+    if (phone.isEmpty) return LoginError.empty;
+    if (!RegExp(r'^[0-9]+$').hasMatch(phone)) return LoginError.notDigits;
+
+    if (dialCode == "+98") {
+      if (!phone.startsWith('09') && !phone.startsWith('9')) {
+        return LoginError.invalidPrefix;
+      }
+      if (phone.startsWith('09') && phone.length != 11) {
+        return LoginError.invalidLength11;
+      }
+      if (phone.startsWith('9') && phone.length != 10) {
+        return LoginError.invalidLength10;
+      }
+    } else {
+      if (phone.length < 6) return LoginError.tooShort;
+    }
+    return null; // بدون خطا
+  }
+}

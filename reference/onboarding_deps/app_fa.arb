@@ -1,0 +1,453 @@
+{
+    "@@locale": "fa",
+    "login": "ورود",
+    "@login": {
+        "description": "عنوان صفحه ورود",
+        "type": "text"
+    },
+    "welcome": "خوش آمدید",
+    "@welcome": {
+        "description": "پیام خوش‌آمدگویی",
+        "type": "text"
+    },
+    "enteryourmobilenumber": "شماره موبایل خود را وارد کنید",
+    "@enteryourmobilenumber": {
+        "description": "راهنما برای وارد کردن شماره موبایل",
+        "type": "text"
+    },
+    "mobileNumber": "شماره موبایل",
+    "@mobileNumber": {
+        "description": "برچسب فیلد شماره موبایل",
+        "type": "text"
+    },
+    "enterMobileError": "لطفاً شماره موبایل خود را وارد کنید",
+    "@enterMobileError": {
+        "description": "خطا زمانی که فیلد شماره موبایل خالی است",
+        "type": "text"
+    },
+    "notDigits": "شماره موبایل باید فقط شامل اعداد باشد",
+    "@notDigits": {
+        "description": "خطا زمانی که شماره شامل کاراکتر غیر عددی است",
+        "type": "text"
+    },
+    "invalidPrefix": "شماره موبایل باید با «09» یا «9» شروع شود",
+    "@invalidPrefix": {
+        "description": "خطا در صورتی که شماره موبایل با پیشوند مجاز شروع نشده باشد",
+        "type": "text"
+    },
+    "enterMobileErrorWithZero": "شماره موبایل باید ۱۱ رقم باشد (با صفر در ابتدای آن)",
+    "@enterMobileErrorWithZero": {
+        "description": "خطا وقتی شماره با 0 شروع می‌شود اما طول اشتباه است",
+        "type": "text"
+    },
+    "enterMobileErrorWithoutZero": "شماره موبایل باید ۱۰ رقم باشد (بدون صفر در ابتدای آن)",
+    "@enterMobileErrorWithoutZero": {
+        "description": "خطا وقتی شماره بدون صفر شروع می‌شود اما طول اشتباه است",
+        "type": "text"
+    },
+    "tooShort": "شماره واردشده خیلی کوتاه است",
+    "@tooShort": {
+        "description": "خطا زمانی که شماره موبایل بسیار کوتاه است",
+        "type": "text"
+    },
+    "networkError": "خطای شبکه، لطفاً اتصال خود را بررسی کنید",
+    "@networkError": {
+        "description": "خطا در صورت وجود مشکل شبکه",
+        "type": "text"
+    },
+    "enterOtpCode": "کد پنج‌رقمی ارسال‌شده به {phoneNumber} را وارد کنید",
+    "@enterOtpCode": {
+        "description": "راهنمای وارد کردن کد تأیید",
+        "type": "text",
+        "placeholders": {
+            "phoneNumber": {
+                "example": "+989123456789"
+            }
+        }
+    },
+    "otpInvalid": "کد تأیید باید ۵ رقم باشد",
+    "@otpInvalid": {
+        "description": "خطا زمانی که کد ناقص یا اشتباه وارد شده",
+        "type": "text"
+    },
+    "didNotReceiveCode": "کد را دریافت نکردم (۰۰:{seconds})",
+    "@didNotReceiveCode": {
+        "description": "متن برای عدم دریافت کد همراه با شمارش معکوس",
+        "placeholders": {
+            "seconds": {
+                "example": "30"
+            }
+        }
+    },
+    "didNotReceiveCodeWithoutTimer": "کد را دریافت نکردم",
+    "@didNotReceiveCodeWithoutTimer": {
+        "description": "متن برای عدم دریافت کد بدون شمارش معکوس"
+    },
+    "changeNumber": "تغییر شماره",
+    "@changeNumber": {
+        "description": "دکمه تغییر شماره موبایل",
+        "type": "text"
+    },
+    "or": "یا",
+    "@or": {
+        "description": "جداکننده بین گزینه‌ها",
+        "type": "text"
+    },
+    "language": "زبان",
+    "@language": {
+        "description": "واژه برای زبان",
+        "type": "text"
+    },
+    "changeLanguage": "تغییر زبان",
+    "@changeLanguage": {
+        "description": "گزینه تغییر زبان در منوی کناری",
+        "type": "text"
+    },
+    "logOut": "خروج از حساب",
+    "@logOut": {
+        "description": "گزینه خروج در منوی کناری",
+        "type": "text"
+    },
+    "services": "خدمات",
+    "@services": {
+        "description": "عنوان بخش خدمات",
+        "type": "text"
+    },
+    "browse": "مرور",
+    "@browse": {
+        "description": "گزینه مرور در منوی کناری",
+        "type": "text"
+    },
+    "activity": "فعالیت‌ها",
+    "@activity": {
+        "description": "برچسب فعالیت‌ها در منو",
+        "type": "text"
+    },
+    "messages": "پیام‌ها",
+    "@messages": {
+        "description": "گزینه پیام‌ها در منوی کناری",
+        "type": "text"
+    },
+    "settings": "تنظیمات",
+    "@settings": {
+        "description": "گزینه تنظیمات در منوی کناری",
+        "type": "text"
+    },
+    "sendGift": "ارسال هدیه",
+    "@sendGift": {
+        "description": "گزینه هدیه در منوی کناری",
+        "type": "text"
+    },
+    "earnByDrivingOrDelivering": "با رانندگی یا تحویل درآمد کسب کنید",
+    "@earnByDrivingOrDelivering": {
+        "description": "گزینه کسب درآمد در منوی کناری",
+        "type": "text"
+    },
+    "businessHub": "مرکز کسب‌وکار",
+    "@businessHub": {
+        "description": "گزینه مرکز کسب‌وکار در منو",
+        "type": "text"
+    },
+    "referFriendsUnlockDeals": "دوستان خود را دعوت کنید و پیشنهادهای ویژه بگیرید",
+    "@referFriendsUnlockDeals": {
+        "description": "گزینه معرفی دوستان",
+        "type": "text"
+    },
+    "manageAddressAccount": "مدیریت حساب آدرس",
+    "@manageAddressAccount": {
+        "description": "گزینه مدیریت حساب کاربری",
+        "type": "text"
+    },
+    "ride": "سفر",
+    "@ride": {
+        "description": "عنوان سرویس سفر",
+        "type": "text"
+    },
+    "deliver": "تحویل",
+    "@deliver": {
+        "description": "عنوان سرویس تحویل",
+        "type": "text"
+    },
+    "airport": "فرودگاه",
+    "@airport": {
+        "description": "عنوان سرویس فرودگاهی",
+        "type": "text"
+    },
+    "bike": "موتور",
+    "@bike": {
+        "description": "عنوان سرویس موتورسیکلت",
+        "type": "text"
+    },
+    "safeYourTrip": "سفر ایمن",
+    "@safeYourTrip": {
+        "description": "زیرنویس سرویس‌های حمل‌ونقل",
+        "type": "text"
+    },
+    "anywhereCityTrip": "هرکجا در شهر",
+    "@anywhereCityTrip": {
+        "description": "زیرنویس سرویس شهری",
+        "type": "text"
+    },
+    "cityOrIntercityTrip": "سفر شهری یا بین‌شهری",
+    "@cityOrIntercityTrip": {
+        "description": "زیرنویس سرویس فرودگاه",
+        "type": "text"
+    },
+    "fastAndSafe": "سریع و ایمن",
+    "@fastAndSafe": {
+        "description": "زیرنویس سرویس موتورسیکلت",
+        "type": "text"
+    },
+    "passengerServices": " سفر",
+    "@passengerServices": {
+        "description": "عنوان خدمات مسافرتی",
+        "type": "text"
+    },
+    "cargoServices": "بارو کالا",
+    "@cargoServices": {
+        "description": "عنوان خدمات باربری",
+        "type": "text"
+    },
+    "foodServices": "غذاوفروشگاه",
+    "@foodServices": {
+        "description": "عنوان خدمات غذایی",
+        "type": "text"
+    },
+    "generalServices": " عمومی",
+    "@generalServices": {
+        "description": "عنوان خدمات عمومی",
+        "type": "text"
+    },
+    "repairServices": "تعمیر و قطعات یدکی",
+    "@repairServices": {
+        "description": "عنوان خدمات تعمیرات",
+        "type": "text"
+    },
+    "insuranceServices": "بیمه",
+    "@insuranceServices": {
+        "description": "عنوان خدمات بیمه‌ای",
+        "type": "text"
+    },
+    "cityAndRoad": "شهر و جاده",
+    "@cityAndRoad": {
+        "description": "زیرعنوان بخش خدمات",
+        "type": "text"
+    },
+    "page1": "صفحه ۱",
+    "@page1": {
+        "description": "صفحه ۱ پیمایش",
+        "type": "text"
+    },
+    "page2": "صفحه ۲",
+    "@page2": {
+        "description": "صفحه ۲ پیمایش",
+        "type": "text"
+    },
+    "page3": "صفحه ۳",
+    "@page3": {
+        "description": "صفحه ۳ پیمایش",
+        "type": "text"
+    },
+    "page4": "صفحه ۴",
+    "@page4": {
+        "description": "صفحه ۴ پیمایش",
+        "type": "text"
+    },
+    "whereTo": "به کجا؟",
+    "@whereTo": {
+        "description": "متن جستجوی مقصد",
+        "type": "text"
+    },
+    "appName": "آدرس",
+    "@appName": {
+        "description": "نام اپلیکیشن در نوار بالا",
+        "type": "text"
+    },
+    "sampleAddress": "خیابان دوم، پلاک ۳۳",
+    "@sampleAddress": {
+        "description": "نمونه آدرس در فهرست فعالیت‌ها",
+        "type": "text"
+    },
+    "samplePrice": "۱۵۰٬۰۰۰",
+    "@samplePrice": {
+        "description": "نمونه قیمت یا زمان سفر",
+        "type": "text"
+    },
+    "name": "نام",
+    "@name": {
+        "description": "برچسب فیلد نام کامل",
+        "type": "text"
+    },
+    "email": "ایمیل",
+    "@email": {
+        "description": "برچسب فیلد ایمیل",
+        "type": "text"
+    },
+    "selectVehicleType": "نوع وسیله نقلیه را انتخاب کنید",
+    "@selectVehicleType": {
+        "description": "عنوان انتخاب نوع وسیله نقلیه",
+        "type": "text"
+    },
+    "mini": "مینی",
+    "@mini": {
+        "description": "گزینه نوع ماشین کوچک",
+        "type": "text"
+    },
+    "sedan": "سدان",
+    "@sedan": {
+        "description": "گزینه نوع سدان",
+        "type": "text"
+    },
+    "suv": "شاسی‌بلند",
+    "@suv": {
+        "description": "گزینه نوع SUV",
+        "type": "text"
+    },
+    "customer": "مشتری",
+    "@customer": {
+        "description": "گزینه نوع کاربر مشتری",
+        "type": "text"
+    },
+    "partner": "همکار",
+    "@partner": {
+        "description": "گزینه نوع کاربر راننده یا همکار",
+        "type": "text"
+    },
+    "vehicleBrandName": "برند خودرو",
+    "@vehicleBrandName": {
+        "description": "برچسب فیلد برند خودرو",
+        "type": "text"
+    },
+    "vehicleModel": "مدل خودرو",
+    "@vehicleModel": {
+        "description": "برچسب فیلد مدل خودرو",
+        "type": "text"
+    },
+    "vehicleType": "نوع خودرو",
+    "@vehicleType": {
+        "description": "برچسب فیلد نوع خودرو",
+        "type": "text"
+    },
+    "vehicleRegistrationNumber": "شماره پلاک خودرو",
+    "@vehicleRegistrationNumber": {
+        "description": "برچسب فیلد شماره پلاک خودرو",
+        "type": "text"
+    },
+    "drivingLicenseNumber": "شماره گواهینامه رانندگی",
+    "@drivingLicenseNumber": {
+        "description": "برچسب فیلد شماره گواهینامه",
+        "type": "text"
+    },
+    "continueAs": "ادامه به عنوان {userType}",
+    "@continueAs": {
+        "description": "دکمه ادامه بر اساس نوع کاربر انتخاب‌شده",
+        "type": "text",
+        "placeholders": {
+            "userType": {
+                "example": "مشتری"
+            }
+        }
+    },
+    "request": "درخواست",
+    "@request": {
+        "description": "دکمه درخواست سرویس",
+        "type": "text"
+    },
+    "mapLoading": "در حال بارگذاری نقشه...",
+    "@mapLoading": {
+        "description": "متن هنگام بارگذاری نقشه",
+        "type": "text"
+    },
+    "taxi": "تاکسی",
+    "@taxi": {
+        "description": "عنوان سرویس تاکسی",
+        "type": "text"
+    },
+    "sharetaxi": "تاکسی اشتراکی",
+    "@sharetaxi": {
+        "description": "عنوان سرویس تاکسی اشتراکی",
+        "type": "text"
+    },
+    "citytocity": "بین‌شهری",
+    "@citytocity": {
+        "description": "عنوان سرویس خارج‌شهری",
+        "type": "text"
+    },
+    "bus": "اتوبوس",
+    "@bus": {
+        "description": "عنوان سرویس اتوبوس",
+        "type": "text"
+    },
+    "train": "قطار",
+    "@train": {
+        "description": "عنوان سرویس قطار",
+        "type": "text"
+    },
+    "airPlane": "هواپیما",
+    "@airPlane": {
+        "description": "عنوان سرویس هوایی",
+        "type": "text"
+    },
+    "findRide": "پیدا کردن سفر",
+    "@findRide": {
+        "description": "عبارت برای یافتن سفر",
+        "type": "text"
+    },
+    "findoffroadtaxi": "پیدا کردن تاکسی بین‌شهری",
+    "@findoffroadtaxi": {
+        "description": "عبارت برای یافتن تاکسی خارج‌شهری",
+        "type": "text"
+    },
+    "busTicket": "بلیط اتوبوس",
+    "@busTicket": {
+        "description": "عبارت برای بلیط اتوبوس",
+        "type": "text"
+    },
+    "trainTicket": "بلیط قطار",
+    "@trainTicket": {
+        "description": "عبارت برای بلیط قطار",
+        "type": "text"
+    },
+    "airplaneTicket": "بلیط هواپیما",
+    "@airplaneTicket": {
+        "description": "عبارت برای بلیط هواپیما",
+        "type": "text"
+    },
+    "otpTitle": "تأیید شماره تلفن",
+    "@otpTitle": {
+        "description": "عنوان صفحه تأیید شماره تلفن",
+        "type": "text"
+    },
+    "otpSentTo": "کد ارسال شد به {phone}",
+    "@otpSentTo": {
+        "description": "پیام نشان‌دهنده شماره تلفن ارسال کد",
+        "placeholders": {
+            "phone": {}
+        },
+        "type": "text"
+    },
+    "resendCode": "ارسال مجدد کد",
+    "@resendCode": {
+        "description": "برچسب دکمه ارسال دوباره کد",
+        "type": "text"
+    },
+    "pickupLocation": "محل سوار شدن",
+    "@pickupLocation": {
+        "description": "برچسب انتخاب محل برداشت مسافر",
+        "type": "text"
+    },
+    "wherefrom": "کجا هستید؟",
+    "@wherefrom": {
+        "description": "پرسش محل مبدا سفر",
+        "type": "text"
+    },
+    "enterFullOtpCode": "کد ۵ رقمی را کامل وارد کنید",
+    "@enterFullOtpCode": {
+        "description": "Error shown when the entered OTP code is less than 5 digits",
+        "type": "text"
+    },
+    "invalidOtpCode": "کد وارد شده صحیح نمی‌باشد",
+    "@invalidOtpCode": {
+        "type": "text"
+    }
+}

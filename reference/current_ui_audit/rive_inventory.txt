@@ -1,0 +1,12 @@
+﻿
+FullName                                                                          Length
+--------                                                                          ------
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\button.riv              1371
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\check.riv               2247
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\confetti.riv            4582
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\icons.riv              10104
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\menu_button.riv         1377
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\shapes.riv              1479
+C:\users\htica\desktop\alireza\address_clean_v1\assets\rive\onboarding\spline.png 203452
+
+

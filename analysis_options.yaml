@@ -1,0 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - reference/**
+    - "**/reference/**"
+    - "**/backups/**"
+    - "**/flutter-auth-gateway-v1-*/**"
+    - "**/broken_partial_auth_*/**"
+    - "**/restore_stable_*/**"

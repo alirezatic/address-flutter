@@ -1,0 +1,78 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
+
+class AnimatedMenuButton extends StatefulWidget {
+  final bool isOpen;
+  final VoidCallback onTap;
+
+  const AnimatedMenuButton({
+    super.key,
+    required this.isOpen,
+    required this.onTap,
+  });
+
+  @override
+  State<AnimatedMenuButton> createState() => _AnimatedMenuButtonState();
+}
+
+class _AnimatedMenuButtonState extends State<AnimatedMenuButton> {
+  SMIBool? _menuBtn;
+
+  void _onMenuIconInit(Artboard artboard) {
+    final controller = StateMachineController.fromArtboard(
+      artboard,
+      "State Machine",
+    );
+
+    if (controller != null) {
+      artboard.addController(controller);
+      _menuBtn = controller.findInput<bool>("isOpen") as SMIBool?;
+      // مقدار اولیه انیمیشن بر اساس وضعیت والد تنظیم می‌شود
+      _menuBtn?.value = widget.isOpen;
+    }
+  }
+
+  @override
+  void didUpdateWidget(AnimatedMenuButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // در صورتی که وضعیت منو در والد تغییر کند، انیمیشن نیز آپدیت می‌شود
+    if (widget.isOpen != oldWidget.isOpen) {
+      _menuBtn?.value = widget.isOpen;
+    }
+  }
+
+  void _handleTap() {
+    // فقط رویداد کلیک را به والد می‌فرستیم.
+    // تغییر انیمیشن به صورت خودکار با تغییر isOpen از طریق didUpdateWidget انجام می‌شود.
+    widget.onTap();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _handleTap,
+      child: Container(
+        height: 50,
+        width: 50,
+        margin: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(44 / 2),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withValues(alpha: 0.11),
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: RiveAnimation.asset(
+          "assets/rive/menu_button.riv",
+          stateMachines: const ["State Machine"],
+          onInit: _onMenuIconInit,
+        ),
+      ),
+    );
+  }
+}

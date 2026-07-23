@@ -1,0 +1,124 @@
+{
+  "@@locale": "fa",
+  "language": "زبان",
+  "@language": {
+    "description": "واژه برای زبان",
+    "type": "text"
+  },
+  "logOut": "خروج از حساب",
+  "@logOut": {
+    "description": "گزینه خروج در منوی کناری",
+    "type": "text"
+  },
+  "services": "خدمات",
+  "@services": {
+    "description": "عنوان بخش خدمات",
+    "type": "text"
+  },
+  "activity": "فعالیت‌ها",
+  "@activity": {
+    "description": "برچسب فعالیت‌ها در منو",
+    "type": "text"
+  },
+  "messages": "پیام‌ها",
+  "@messages": {
+    "description": "گزینه پیام‌ها در منوی کناری",
+    "type": "text"
+  },
+  "settings": "تنظیمات",
+  "@settings": {
+    "description": "گزینه تنظیمات در منوی کناری",
+    "type": "text"
+  },
+  "sendGift": "ارسال هدیه",
+  "@sendGift": {
+    "description": "گزینه هدیه در منوی کناری",
+    "type": "text"
+  },
+  "businessHub": "مرکز کسب‌وکار",
+  "@businessHub": {
+    "description": "گزینه مرکز کسب‌وکار در منو",
+    "type": "text"
+  },
+  "manageAddressAccount": "مدیریت حساب آدرس",
+  "@manageAddressAccount": {
+    "description": "گزینه مدیریت حساب کاربری",
+    "type": "text"
+  },
+  "ride": "سفر",
+  "@ride": {
+    "description": "عنوان سرویس سفر",
+    "type": "text"
+  },
+  "deliver": "تحویل",
+  "@deliver": {
+    "description": "عنوان سرویس تحویل",
+    "type": "text"
+  },
+  "airport": "فرودگاه",
+  "@airport": {
+    "description": "عنوان سرویس فرودگاهی",
+    "type": "text"
+  },
+  "bike": "موتور",
+  "@bike": {
+    "description": "عنوان سرویس موتورسیکلت",
+    "type": "text"
+  },
+  "safeYourTrip": "سفر ایمن",
+  "@safeYourTrip": {
+    "description": "زیرنویس سرویس‌های حمل‌ونقل",
+    "type": "text"
+  },
+  "anywhereCityTrip": "هرکجا در شهر",
+  "@anywhereCityTrip": {
+    "description": "زیرنویس سرویس شهری",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "سفر شهری یا بین‌شهری",
+  "@cityOrIntercityTrip": {
+    "description": "زیرنویس سرویس فرودگاه",
+    "type": "text"
+  },
+  "fastAndSafe": "سریع و ایمن",
+  "@fastAndSafe": {
+    "description": "زیرنویس سرویس موتورسیکلت",
+    "type": "text"
+  },
+  "passengerServices": " سفر",
+  "@passengerServices": {
+    "description": "عنوان خدمات مسافرتی",
+    "type": "text"
+  },
+  "cargoServices": "بارو کالا",
+  "@cargoServices": {
+    "description": "عنوان خدمات باربری",
+    "type": "text"
+  },
+  "foodServices": "غذاوفروشگاه",
+  "@foodServices": {
+    "description": "عنوان خدمات غذایی",
+    "type": "text"
+  },
+  "generalServices": " عمومی",
+  "@generalServices": {
+    "description": "عنوان خدمات عمومی",
+    "type": "text"
+  },
+  "repairServices": "تعمیر و قطعات یدکی",
+  "@repairServices": {
+    "description": "عنوان خدمات تعمیرات",
+    "type": "text"
+  },
+  "insuranceServices": "بیمه",
+  "@insuranceServices": {
+    "description": "عنوان خدمات بیمه‌ای",
+    "type": "text"
+  },
+  "comingSoon": "این بخش به‌زودی فعال می‌شود.",
+  "logoutConfirmTitle": "خروج از حساب",
+  "logoutConfirmMessage": "آیا می‌خواهید از حساب کاربری خارج شوید؟",
+  "cancel": "انصراف",
+  "confirm": "خروج",
+  "addressUser": "کاربر آدرس"
+}

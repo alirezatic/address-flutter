@@ -1,0 +1,43 @@
+import 'package:address/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:address/core/design_system/colors/app_colors.dart';
+import 'package:address/core/design_system/theme/theme_extensions.dart';
+import 'package:address/core/extensions/context/build_context_extension.dart';
+
+class OrDivider extends StatelessWidget {
+  const OrDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = ThemeContextExtension(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
+
+    return Row(
+      children: [
+        const Expanded(
+          child: Divider(
+            color: AppColors.grey, // استفاده از رنگ استاندارد
+            thickness: 1,
+          ),
+        ),
+        Padding(
+          // استفاده از اکستنشن ابعاددهی جدید
+          padding: EdgeInsets.symmetric(horizontal: context.w(3)),
+          child: Text(
+            l10n.or,
+            style:
+                textTheme.bodyMedium?.copyWith(
+                  color: AppColors.grey,
+                  fontWeight: FontWeight.bold,
+                ) ??
+                const TextStyle(
+                  color: AppColors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
+        const Expanded(child: Divider(color: AppColors.grey, thickness: 1)),
+      ],
+    );
+  }
+}

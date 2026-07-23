@@ -1,0 +1,248 @@
+{
+  "@@locale": "ar",
+  "appTitle": "التطبق الشامل",
+  "home": "الرئسة",
+  "phoneNumber": "رقم الهاتف",
+  "continueLabel": "متابعة",
+  "retry": "إعادة المحاولة",
+  "unknownError": "حدث خطأ غر معروف",
+  "getStarted": "ابدأ",
+  "changeLanguage": "تغر اللغة",
+  "onboardingSubtitle": "استمتع بالتنقل والتسوق والتوصل والخدمات الومة بسهولة أكبر.",
+  "onboardingTitle": "كل خدمات المدنة ف عنوان واحد",
+  "login": "تسجيل الدخول",
+  "@login": {
+    "description": "عنوان صفحه ورود",
+    "type": "text"
+  },
+  "welcome": "مرحبًا",
+  "@welcome": {
+    "description": "رسالة الترحيب",
+    "type": "text"
+  },
+  "enteryourmobilenumber": "أدخل رقم جوالك",
+  "@enteryourmobilenumber": {
+    "description": "تعليمات لإدخال رقم الهاتف المحمول",
+    "type": "text"
+  },
+  "mobileNumber": "رقم الجوال",
+  "@mobileNumber": {
+    "description": "تسمية حقل رقم الجوال",
+    "type": "text"
+  },
+  "enterMobileError": "يرجى إدخال رقم الجوال",
+  "@enterMobileError": {
+    "description": "خطأ عند ترك حقل رقم الجوال فارغًا",
+    "type": "text"
+  },
+  "notDigits": "يجب أن يحتوي رقم الجوال على أرقام فقط",
+  "@notDigits": {
+    "description": "خطأ عند إدخال رموز غير أرقام في رقم الجوال",
+    "type": "text"
+  },
+  "invalidPrefix": "يجب أن يبدأ رقم الجوال بـ '09' أو '9'",
+  "@invalidPrefix": {
+    "description": "خطأ في بادئة رقم الجوال غير صحيحة",
+    "type": "text"
+  },
+  "enterMobileErrorWithZero": "يجب أن يكون رقم الجوال 11 رقمًا (يبدأ بـ 0)",
+  "@enterMobileErrorWithZero": {
+    "description": "خطأ عند طول رقم الجوال غير صحيح مع بدء الرقم بـ 0",
+    "type": "text"
+  },
+  "enterMobileErrorWithoutZero": "يجب أن يكون رقم الجوال 10 أرقام (بدون 0 في البداية)",
+  "@enterMobileErrorWithoutZero": {
+    "description": "خطأ عند طول رقم الجوال غير صحيح بدون 0 في البداية",
+    "type": "text"
+  },
+  "tooShort": "رقم الجوال قصير جدًا",
+  "@tooShort": {
+    "description": "خطأ عندما يكون رقم الجوال قصيراً للغاية",
+    "type": "text"
+  },
+  "networkError": "خطأ في الشبكة، يرجى التحقق من اتصال الإنترنت",
+  "@networkError": {
+    "description": "خطأ عند وجود مشكلة في الشبكة",
+    "type": "text"
+  },
+  "enterOtpCode": "أدخل رمز التحقق الخماسي المرسل إلى {phoneNumber}",
+  "@enterOtpCode": {
+    "description": "تعليمات إدخال رمز التحقق",
+    "type": "text",
+    "placeholders": {
+      "phoneNumber": {
+        "example": "+989123456789"
+      }
+    }
+  },
+  "didNotReceiveCode": "لم تستلم رمزًّا (00:{seconds})",
+  "@didNotReceiveCode": {
+    "description": "نص عند عدم استلام الرمز مع عد تنازلي للثواني",
+    "placeholders": {
+      "seconds": {
+        "example": "30"
+      }
+    }
+  },
+  "resendCode": "إعادة إرسال الرمز",
+  "@resendCode": {
+    "description": "تسمية زر إعادة إرسال الرمز",
+    "type": "text"
+  },
+  "changeNumber": "تغيير الرقم",
+  "@changeNumber": {
+    "description": "زر تغيير رقم الجوال",
+    "type": "text"
+  },
+  "or": "أو",
+  "@or": {
+    "description": "فاصل بين الخيارات",
+    "type": "text"
+  },
+  "email": "البريد الإلكتروني",
+  "@email": {
+    "description": "تسمية حقل البريد الإلكتروني",
+    "type": "text"
+  },
+  "enterFullOtpCode": "يرجى إدخال الرمز الكامل المكوّن من 5 أرقام",
+  "@enterFullOtpCode": {
+    "description": "Error shown when the entered OTP code is less than 5 digits",
+    "type": "text"
+  },
+  "invalidOtpCode": "رمز التحقق غير صحيح",
+  "@invalidOtpCode": {
+    "description": "Message shown when OTP verification fails",
+    "type": "text"
+  },
+  "expiredOtpCode": "انتهت صلاحية رمز التحقق. اطلب رمزًا جديدًا",
+  "@expiredOtpCode": {
+    "description": "Message shown when OTP challenge is expired",
+    "type": "text"
+  },
+  "otpRequestTooSoon": "يرجى الانتظار قبل طلب رمز آخر",
+  "@otpRequestTooSoon": {
+    "description": "Message shown when OTP resend cooldown is active",
+    "type": "text"
+  },
+  "language": "اللغة",
+  "@language": {
+    "description": "كلمة اللغة",
+    "type": "text"
+  },
+  "logOut": "تسجيل الخروج",
+  "@logOut": {
+    "description": "خيار تسجيل الخروج في القائمة الجانبية",
+    "type": "text"
+  },
+  "services": "الخدمات",
+  "@services": {
+    "description": "عنوان قسم الخدمات",
+    "type": "text"
+  },
+  "activity": "النشاطات",
+  "@activity": {
+    "description": "تسمية النشاطات في القائمة",
+    "type": "text"
+  },
+  "messages": "الرسائل",
+  "@messages": {
+    "description": "خيار الرسائل في القائمة الجانبية",
+    "type": "text"
+  },
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "خيار الإعدادات في القائمة الجانبية",
+    "type": "text"
+  },
+  "sendGift": "إرسال هدية",
+  "@sendGift": {
+    "description": "خيار الهدية في القائمة الجانبية",
+    "type": "text"
+  },
+  "businessHub": "مركز الأعمال",
+  "@businessHub": {
+    "description": "خيار مركز الأعمال في القائمة",
+    "type": "text"
+  },
+  "manageAddressAccount": "إدارة الحساب والعنوان",
+  "@manageAddressAccount": {
+    "description": "خيار إدارة الحساب",
+    "type": "text"
+  },
+  "ride": "الرحلة",
+  "@ride": {
+    "description": "عنوان خدمة الرحلات",
+    "type": "text"
+  },
+  "deliver": "التوصيل",
+  "@deliver": {
+    "description": "عنوان خدمة التوصيل",
+    "type": "text"
+  },
+  "airport": "المطار",
+  "@airport": {
+    "description": "عنوان خدمة المطار",
+    "type": "text"
+  },
+  "bike": "دراجة نارية",
+  "@bike": {
+    "description": "عنوان خدمة الدراجة النارية",
+    "type": "text"
+  },
+  "safeYourTrip": "أمّن رحلتك",
+  "@safeYourTrip": {
+    "description": "توضيح خدمات النقل",
+    "type": "text"
+  },
+  "anywhereCityTrip": "في أي مكان داخل المدينة",
+  "@anywhereCityTrip": {
+    "description": "توضيح خدمة مدينة",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "رحلة داخل المدينة أو بين المدن",
+  "@cityOrIntercityTrip": {
+    "description": "توضيح خدمة المطار",
+    "type": "text"
+  },
+  "fastAndSafe": "سريع وآمن",
+  "@fastAndSafe": {
+    "description": "توضيح خدمة الدراجة النارية",
+    "type": "text"
+  },
+  "passengerServices": "خدمات الركاب",
+  "@passengerServices": {
+    "description": "عنوان خدمات الركاب",
+    "type": "text"
+  },
+  "cargoServices": "خدمات الشحن",
+  "@cargoServices": {
+    "description": "عنوان خدمات الشحن",
+    "type": "text"
+  },
+  "foodServices": "خدمات الطعام",
+  "@foodServices": {
+    "description": "عنوان خدمات الطعام",
+    "type": "text"
+  },
+  "generalServices": "الخدمات العامة",
+  "@generalServices": {
+    "description": "عنوان الخدمات العامة",
+    "type": "text"
+  },
+  "repairServices": "خدمات الإصلاح وقطع الغيار",
+  "@repairServices": {
+    "description": "عنوان خدمات الإصلاح",
+    "type": "text"
+  },
+  "insuranceServices": "خدمات التأمين",
+  "@insuranceServices": {
+    "description": "عنوان خدمات التأمين",
+    "type": "text"
+  },
+  "comingSoon": "سيتم تفعيل هذا القسم قريبًا.",
+  "logoutConfirmTitle": "تسجيل الخروج",
+  "logoutConfirmMessage": "هل تريد تسجيل الخروج من حسابك؟",
+  "cancel": "إلغاء",
+  "confirm": "تسجيل الخروج",
+  "addressUser": "مستخدم عنوان"
+}

@@ -1,0 +1,42 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class CircularRiveButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final double size;
+  final IconData icon; // اضافه شدن پارامتر آیکون
+
+  const CircularRiveButton({
+    super.key,
+    required this.onPressed,
+    required this.size,
+    required this.icon, // دریافت آیکون در سازنده
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      onPressed: onPressed,
+      child: Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: colorScheme.surface,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withValues(alpha: 0.25),
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        // استفاده از متغیر icon به جای آیکون ثابت
+        child: Icon(icon, color: colorScheme.onSurface),
+      ),
+    );
+  }
+}

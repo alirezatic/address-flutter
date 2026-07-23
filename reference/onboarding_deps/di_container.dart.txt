@@ -1,0 +1,113 @@
+class DIContainer {
+  static final DIContainer _instance = DIContainer._internal();
+  factory DIContainer() => _instance;
+  DIContainer._internal();
+
+  /// =========================
+  /// Storage Layers
+  /// =========================
+
+  final Map<Type, Object> _instances = {};
+  final Map<Type, Object Function()> _lazyBuilders = {};
+  final Map<Type, Object Function()> _factoryBuilders = {};
+
+  /// =========================
+  /// Singleton Registration
+  /// =========================
+
+  void registerSingleton<T extends Object>(T instance) {
+    if (isRegistered<T>()) {
+      throw _alreadyRegisteredError<T>();
+    }
+    _instances[T] = instance;
+  }
+
+  /// =========================
+  /// Lazy Singleton Registration
+  /// =========================
+
+  void registerLazySingleton<T extends Object>(T Function() builder) {
+    if (isRegistered<T>()) {
+      throw _alreadyRegisteredError<T>();
+    }
+    _lazyBuilders[T] = builder;
+  }
+
+  /// =========================
+  /// Factory Registration
+  /// =========================
+
+  void registerFactory<T extends Object>(T Function() builder) {
+    if (isRegistered<T>()) {
+      throw _alreadyRegisteredError<T>();
+    }
+    _factoryBuilders[T] = builder;
+  }
+
+  /// =========================
+  /// Resolve Dependency
+  /// =========================
+
+  T get<T extends Object>() {
+    // 1. Already created singleton
+    final instance = _instances[T];
+    if (instance != null) {
+      return instance as T;
+    }
+
+    // 2. Lazy singleton build-once
+    final lazyBuilder = _lazyBuilders[T];
+    if (lazyBuilder != null) {
+      final created = lazyBuilder();
+      _instances[T] = created;
+      _lazyBuilders.remove(T);
+      return created as T;
+    }
+
+    // 3. Factory (new instance every time)
+    final factoryBuilder = _factoryBuilders[T];
+    if (factoryBuilder != null) {
+      return factoryBuilder() as T;
+    }
+
+    throw _notRegisteredError<T>();
+  }
+
+  /// =========================
+  /// Check registration
+  /// =========================
+
+  bool isRegistered<T>() {
+    return _instances.containsKey(T) ||
+        _lazyBuilders.containsKey(T) ||
+        _factoryBuilders.containsKey(T);
+  }
+
+  /// =========================
+  /// Reset Container (Testing / Logout)
+  /// =========================
+
+  void reset() {
+    _instances.clear();
+    _lazyBuilders.clear();
+    _factoryBuilders.clear();
+  }
+
+  /// =========================
+  /// Error Handling (Professional Debugging)
+  /// =========================
+
+  Exception _alreadyRegisteredError<T>() {
+    return Exception(
+      "DIContainer Error: ${T.toString()} is already registered. "
+      "Avoid duplicate registration in AppBootstrap or module initialization.",
+    );
+  }
+
+  Exception _notRegisteredError<T>() {
+    return Exception(
+      "DIContainer Error: ${T.toString()} is not registered. "
+      "Check AppBootstrap or ModuleLoader initialization order.",
+    );
+  }
+}

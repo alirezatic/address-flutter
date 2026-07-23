@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  AppColors._();
+
+  static const Color white = Colors.white;
+  static const Color black = Colors.black;
+  static const Color transparent = Colors.transparent;
+  static const Color black38 = Color(0x61000000);
+  static const Color black87 = Color(0xDD000000);
+
+  // Grey Scale
+  static const Color grey = Colors.grey;
+  static const Color grey50 = Color(0xFFAFAFAF);
+  static const Color greyShade1 = Color(0xFFC7C7C7);
+  static const Color greyShade2 = Color(0xFFDBDBDB);
+  static const Color greyShade3 = Color(0xFFEEEEEE);
+  static const Color grey100 = Color(0xFFF5F5F5);
+  static const Color grey200 = Color(0xFFEEEEEE);
+  static const Color grey300 = Color(0xFFE0E0E0);
+  static const Color greyShadeButton = Color(0xFFE8E8E8);
+
+  // Brand
+  static const Color primary = Color(0xFF072044);
+  static const Color primaryLight = Color(0xFF2F4C7C);
+  static const Color secondary = Color(0xFFDF960E);
+  static const Color buttonColor = Color(0xFFFFC107);
+
+  // Material & Status Colors
+  static const Color orange = Color(0xFFFF9800);
+  static const Color blue = Color(0xFF2196F3);
+  static const Color amber = Color(0xFFFFC107);
+  static const Color teal = Color(0xFF009688);
+  static const Color blue50 = Color(0xFFE3F2FD);
+  static const Color blueAccent100 = Color(0xFF82B1FF);
+
+  static const Color success = Color(0xFF10B981);
+  static const Color green200 = Color(0xFF2B852E);
+  static const Color error = Color(0xFF831D1D);
+  static const Color red = Color(0xFFF44336);
+  static const Color warning = Color(0xFFF59E0B);
+
+  // Surfaces & Backgrounds
+  static const Color surface = Color(0xFFFFFFFF);
+  static const Color background = Color(0xFF072044);
+  static const Color background1 = Color(0xFF193B72);
+  static const Color background2 = Color(0xFF4D6CA0);
+  static const Color background3 = Color(0xFF9DB5DB);
+
+  static const Color backgroundDark = Color(0xFF04152E);
+  static const Color surfaceDark = Color(0xFF0F1E35);
+
+  // UI & Text
+  static const Color shadow = Color(0xFF4A5367);
+  static const Color border = Color(0xFFE5E7EB);
+  static const Color divider = grey300;
+
+  static const Color textPrimary = Color(0xFF111827);
+  static const Color textSecondary = Color(0xFF6B7280);
+  static const Color textPrimaryDark = white;
+  static const Color textSecondaryDark = grey300;
+}
+
+class AppShadows {
+  AppShadows._();
+  static final List<BoxShadow> small = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.05),
+      blurRadius: 8,
+      offset: const Offset(0, 3),
+    ),
+  ];
+  static final List<BoxShadow> medium = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.10),
+      blurRadius: 16,
+      offset: const Offset(0, 6),
+    ),
+  ];
+  static final List<BoxShadow> large = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.15),
+      blurRadius: 28,
+      offset: const Offset(0, 12),
+    ),
+  ];
+}

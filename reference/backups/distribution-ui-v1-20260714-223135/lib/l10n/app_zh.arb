@@ -1,0 +1,248 @@
+{
+  "@@locale": "zh",
+  "appTitle": "超级应用",
+  "home": "首页",
+  "phoneNumber": "手机号码",
+  "continueLabel": "继续",
+  "retry": "重试",
+  "unknownError": "发生未知错误",
+  "getStarted": "开始",
+  "changeLanguage": "更改语言",
+  "onboardingSubtitle": "更轻松地使用出行、购物、配送和日常服务。",
+  "onboardingTitle": "城市服务，尽在一个地址",
+  "login": "登录",
+  "@login": {
+    "description": "登录页面标题",
+    "type": "text"
+  },
+  "welcome": "欢迎",
+  "@welcome": {
+    "description": "欢迎消息",
+    "type": "text"
+  },
+  "enteryourmobilenumber": "请输入您的手机号码",
+  "@enteryourmobilenumber": {
+    "description": "输入手机号码的提示",
+    "type": "text"
+  },
+  "mobileNumber": "手机号码",
+  "@mobileNumber": {
+    "description": "手机号码字段标签",
+    "type": "text"
+  },
+  "enterMobileError": "请输入手机号码",
+  "@enterMobileError": {
+    "description": "手机号码为空时的错误提示",
+    "type": "text"
+  },
+  "notDigits": "手机号码只能包含数字",
+  "@notDigits": {
+    "description": "当手机号码包含非数字字符时错误提示",
+    "type": "text"
+  },
+  "invalidPrefix": "手机号码必须以“09”或“9”开头",
+  "@invalidPrefix": {
+    "description": "手机号码前缀不正确时的错误提示",
+    "type": "text"
+  },
+  "enterMobileErrorWithZero": "手机号码应为11位（以0开头）",
+  "@enterMobileErrorWithZero": {
+    "description": "以0开头但长度不正确时的错误提示",
+    "type": "text"
+  },
+  "enterMobileErrorWithoutZero": "手机号码应为10位（不以0开头）",
+  "@enterMobileErrorWithoutZero": {
+    "description": "不以0开头且长度不正确时的错误提示",
+    "type": "text"
+  },
+  "tooShort": "手机号码过短",
+  "@tooShort": {
+    "description": "手机号码太短时的错误提示",
+    "type": "text"
+  },
+  "networkError": "网络错误，请检查您的连接",
+  "@networkError": {
+    "description": "网络连接问题时的错误提示",
+    "type": "text"
+  },
+  "enterOtpCode": "请输入发送到 {phoneNumber} 的五位验证码",
+  "@enterOtpCode": {
+    "description": "输入验证码的提示",
+    "type": "text",
+    "placeholders": {
+      "phoneNumber": {
+        "example": "+989123456789"
+      }
+    }
+  },
+  "didNotReceiveCode": "未收到验证码 (00:{seconds})",
+  "@didNotReceiveCode": {
+    "description": "未收到验证码文字带倒计时秒数",
+    "placeholders": {
+      "seconds": {
+        "example": "30"
+      }
+    }
+  },
+  "resendCode": "重新发送验证码",
+  "@resendCode": {
+    "description": "重新发送验证码按钮标签",
+    "type": "text"
+  },
+  "changeNumber": "更改号码",
+  "@changeNumber": {
+    "description": "更改手机号码按钮",
+    "type": "text"
+  },
+  "or": "或",
+  "@or": {
+    "description": "选项之间的分隔",
+    "type": "text"
+  },
+  "email": "电子邮件",
+  "@email": {
+    "description": "电子邮件字段标签",
+    "type": "text"
+  },
+  "enterFullOtpCode": "请输入完整的5位验证码",
+  "@enterFullOtpCode": {
+    "description": "Error shown when the entered OTP code is less than 5 digits",
+    "type": "text"
+  },
+  "invalidOtpCode": "验证码不正确",
+  "@invalidOtpCode": {
+    "description": "Message shown when OTP verification fails",
+    "type": "text"
+  },
+  "expiredOtpCode": "验证码已过期，请重新获取",
+  "@expiredOtpCode": {
+    "description": "Message shown when OTP challenge is expired",
+    "type": "text"
+  },
+  "otpRequestTooSoon": "请稍候再请求新的验证码",
+  "@otpRequestTooSoon": {
+    "description": "Message shown when OTP resend cooldown is active",
+    "type": "text"
+  },
+  "language": "语言",
+  "@language": {
+    "description": "语言一词",
+    "type": "text"
+  },
+  "logOut": "注销",
+  "@logOut": {
+    "description": "侧边菜单注销选项",
+    "type": "text"
+  },
+  "services": "服务",
+  "@services": {
+    "description": "服务章节标题",
+    "type": "text"
+  },
+  "activity": "活动",
+  "@activity": {
+    "description": "菜单中的活动标签",
+    "type": "text"
+  },
+  "messages": "消息",
+  "@messages": {
+    "description": "侧边菜单消息选项",
+    "type": "text"
+  },
+  "settings": "设置",
+  "@settings": {
+    "description": "侧边菜单设置选项",
+    "type": "text"
+  },
+  "sendGift": "发送礼物",
+  "@sendGift": {
+    "description": "侧边菜单礼物选项",
+    "type": "text"
+  },
+  "businessHub": "商务中心",
+  "@businessHub": {
+    "description": "菜单中的商务中心选项",
+    "type": "text"
+  },
+  "manageAddressAccount": "管理账户和地址",
+  "@manageAddressAccount": {
+    "description": "管理账户的选项",
+    "type": "text"
+  },
+  "ride": "出行",
+  "@ride": {
+    "description": "出行服务标题",
+    "type": "text"
+  },
+  "deliver": "配送",
+  "@deliver": {
+    "description": "配送服务标题",
+    "type": "text"
+  },
+  "airport": "机场",
+  "@airport": {
+    "description": "机场服务标题",
+    "type": "text"
+  },
+  "bike": "摩托车",
+  "@bike": {
+    "description": "摩托车服务标题",
+    "type": "text"
+  },
+  "safeYourTrip": "保障您的旅程",
+  "@safeYourTrip": {
+    "description": "运输服务副标题",
+    "type": "text"
+  },
+  "anywhereCityTrip": "市内任意地点",
+  "@anywhereCityTrip": {
+    "description": "城市服务副标题",
+    "type": "text"
+  },
+  "cityOrIntercityTrip": "市内或城际行程",
+  "@cityOrIntercityTrip": {
+    "description": "机场服务副标题",
+    "type": "text"
+  },
+  "fastAndSafe": "快速且安全",
+  "@fastAndSafe": {
+    "description": "摩托车服务副标题",
+    "type": "text"
+  },
+  "passengerServices": "乘客服务",
+  "@passengerServices": {
+    "description": "乘客服务标题",
+    "type": "text"
+  },
+  "cargoServices": "货运服务",
+  "@cargoServices": {
+    "description": "货运服务标题",
+    "type": "text"
+  },
+  "foodServices": "餐饮服务",
+  "@foodServices": {
+    "description": "餐饮服务标题",
+    "type": "text"
+  },
+  "generalServices": "综合服务",
+  "@generalServices": {
+    "description": "综合服务标题",
+    "type": "text"
+  },
+  "repairServices": "维修与配件",
+  "@repairServices": {
+    "description": "维修服务标题",
+    "type": "text"
+  },
+  "insuranceServices": "保险服务",
+  "@insuranceServices": {
+    "description": "保险服务标题",
+    "type": "text"
+  },
+  "comingSoon": "此功能即将上线。",
+  "logoutConfirmTitle": "退出登录",
+  "logoutConfirmMessage": "确定要退出当前账户吗？",
+  "cancel": "取消",
+  "confirm": "退出",
+  "addressUser": "地址用户"
+}

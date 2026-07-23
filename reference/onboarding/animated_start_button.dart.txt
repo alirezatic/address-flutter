@@ -1,0 +1,261 @@
+import 'package:address/core/design_system/colors/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:address/core/design_system/responsive/device_extension.dart';
+
+class AnimatedStartButton extends StatefulWidget {
+  final VoidCallback onTap;
+  final bool isLoading;
+  final String? title;
+  final IconData? icon;
+
+  const AnimatedStartButton({
+    super.key,
+    required this.onTap,
+    required this.isLoading,
+    this.title,
+    this.icon,
+  });
+
+  @override
+  State<AnimatedStartButton> createState() => _AnimatedStartButtonState();
+}
+
+class _AnimatedStartButtonState extends State<AnimatedStartButton>
+    with TickerProviderStateMixin {
+  late final AnimationController _glow;
+  late final AnimationController _sweep;
+  late final AnimationController _iconAnim;
+  late final AnimationController _press;
+
+  late final Animation<double> _pressScale;
+
+  bool _pressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _glow = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+
+    _sweep = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..repeat();
+
+    _iconAnim = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+
+    _press = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 160),
+    );
+
+    _pressScale = Tween<double>(
+      begin: 1,
+      end: 0.92,
+    ).animate(CurvedAnimation(parent: _press, curve: Curves.easeOutBack));
+  }
+
+  @override
+  void didUpdateWidget(covariant AnimatedStartButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.isLoading) {
+      _iconAnim.forward();
+    } else {
+      _iconAnim.reverse();
+    }
+  }
+
+  @override
+  void dispose() {
+    _glow.dispose();
+    _sweep.dispose();
+    _iconAnim.dispose();
+    _press.dispose();
+    super.dispose();
+  }
+
+  void _tapDown(TapDownDetails _) {
+    if (widget.isLoading) return;
+
+    HapticFeedback.lightImpact();
+
+    _pressed = true;
+    _press.forward();
+  }
+
+  void _tapUp(TapUpDetails _) {
+    if (widget.isLoading) return;
+
+    _pressed = false;
+    _press.reverse();
+    // فراخوانی widget.onTap() از اینجا حذف شد تا دو بار اجرا نشود
+  }
+
+  void _tapCancel() {
+    if (widget.isLoading) return;
+
+    _pressed = false;
+    _press.reverse();
+  }
+
+  int _alpha(double v) => (v * 255).round().clamp(0, 255);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenH = context.height;
+    final screenW = context.width;
+
+    final btnWidth = screenH * 0.25;
+    final btnHeight = screenW * 0.1432;
+    final textSize = screenW * 0.045;
+    final iconSize = screenW * 0.07;
+    final loaderSize = screenW * 0.055;
+
+    return GestureDetector(
+      behavior: HitTestBehavior
+          .opaque, // اضافه شد تا کلیک روی نقاط خالی دکمه هم ثبت شود
+      onTapDown: widget.isLoading ? null : _tapDown,
+      onTapUp: widget.isLoading ? null : _tapUp,
+      onTapCancel: widget.isLoading ? null : _tapCancel,
+      onTap: widget.isLoading
+          ? null
+          : widget.onTap, // اضافه شد: مکان اصلی و استاندارد برای دریافت کلیک
+      child: RepaintBoundary(
+        child: AnimatedBuilder(
+          animation: Listenable.merge([_glow, _sweep, _press]),
+          builder: (_, _) {
+            final glow = _glow.value;
+
+            return Transform.scale(
+              scale: _pressScale.value,
+              child: Container(
+                width: btnWidth,
+                height: btnHeight,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppColors.background1.withAlpha(_alpha(0.9 + glow * 0.1)),
+                      AppColors.background.withAlpha(_alpha(0.75 + glow * 0.1)),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.background2.withAlpha(
+                        _alpha(0.6 * glow),
+                      ),
+                      blurRadius: 25 + (15 * glow),
+                      spreadRadius: 2 + (2 * glow),
+                    ),
+                    BoxShadow(
+                      color: AppColors.black.withAlpha(_alpha(0.25)),
+                      blurRadius: _pressed ? 6 : 16,
+                      offset: Offset(0, _pressed ? 4 : 10),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned.fill(
+                        child: CustomPaint(
+                          painter: _LiquidHighlightPainter(
+                            progress: _sweep.value,
+                          ),
+                        ),
+                      ),
+                      AnimatedBuilder(
+                        animation: _iconAnim,
+                        builder: (_, _) {
+                          return Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Opacity(
+                                opacity: 1 - _iconAnim.value,
+                                child: _buildContent(textSize, iconSize),
+                              ),
+                              Opacity(
+                                opacity: _iconAnim.value,
+                                child: SizedBox(
+                                  width: loaderSize,
+                                  height: loaderSize,
+                                  child: const CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation(
+                                      AppColors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent(double textSize, double iconSize) {
+    if (widget.title != null && widget.title!.isNotEmpty) {
+      return Text(
+        widget.title!,
+        style: TextStyle(
+          color: AppColors.white,
+          fontSize: textSize,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    } else if (widget.icon != null) {
+      return Icon(widget.icon, color: AppColors.white, size: iconSize);
+    } else {
+      return Icon(
+        Icons.arrow_forward_rounded,
+        color: AppColors.white,
+        size: iconSize,
+      );
+    }
+  }
+}
+
+class _LiquidHighlightPainter extends CustomPainter {
+  final double progress;
+
+  _LiquidHighlightPainter({required this.progress});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..shader = RadialGradient(
+        colors: [Colors.white.withValues(alpha: 0.25), Colors.transparent],
+        radius: 0.6,
+        center: Alignment(-1 + (2 * progress), -0.2),
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _LiquidHighlightPainter oldDelegate) {
+    return oldDelegate.progress != progress;
+  }
+}

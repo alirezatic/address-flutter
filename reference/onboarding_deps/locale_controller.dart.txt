@@ -1,0 +1,28 @@
+import 'package:address/core/localization/services/language_service.dart';
+import 'package:flutter/material.dart';
+import '../constants/locale_constants.dart';
+
+class LocaleController extends ChangeNotifier {
+  Locale _locale = const Locale(LocaleConstants.defaultLanguage);
+
+  Locale get locale => _locale;
+
+  final LanguageStorageService _storage = LanguageStorageService();
+
+  Future<void> loadSavedLocale() async {
+    final code = await _storage.getSavedLanguage();
+
+    if (code != null) {
+      _locale = Locale(code);
+      notifyListeners();
+    }
+  }
+
+  Future<void> changeLocale(String code) async {
+    _locale = Locale(code);
+
+    await _storage.saveLanguage(code);
+
+    notifyListeners();
+  }
+}
