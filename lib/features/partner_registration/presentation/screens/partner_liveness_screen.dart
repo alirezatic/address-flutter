@@ -11,6 +11,7 @@ import 'package:address/core/design_system/components/buttons/animated_start_but
 import 'package:address/core/design_system/components/layout/app_page_scaffold.dart';
 import 'package:address/core/design_system/tokens/app_design_tokens.dart';
 import 'package:address/features/partner_registration/data/models/partner_liveness_session.dart';
+import 'package:address/features/partner_registration/data/partner_media_repository.dart';
 import 'package:address/features/partner_registration/data/partner_verification_repository.dart';
 import 'package:address/features/partner_registration/domain/models/partner_registration_draft.dart';
 import 'package:address/features/partner_registration/presentation/controller/partner_registration_controller.dart';
@@ -36,6 +37,7 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
 
   late final PartnerRegistrationController _registrationController;
   late final PartnerVerificationRepository _repository;
+  late final PartnerMediaRepository _mediaRepository;
 
   PartnerLivenessSession? _session;
   CameraController? _cameraController;
@@ -61,6 +63,7 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
       draft: widget.draft,
     );
     _repository = PartnerVerificationRepository();
+    _mediaRepository = PartnerMediaRepository();
   }
 
   @override
@@ -150,7 +153,8 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
                 ),
               ),
               const SizedBox(height: AppSpacingTokens.large),
-              if (_errorMessage != null) ...<Widget>[
+              if (_errorMessage != null &&
+                  _stage != _LivenessStage.preview) ...<Widget>[
                 _LivenessErrorBanner(message: _errorMessage!),
                 const SizedBox(height: AppSpacingTokens.medium),
               ],
@@ -372,6 +376,10 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
             ),
           ],
         ),
+        if (_errorMessage != null) ...<Widget>[
+          const SizedBox(height: AppSpacingTokens.medium),
+          _LivenessErrorBanner(message: _errorMessage!),
+        ],
       ],
     );
   }
@@ -717,11 +725,69 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
       _errorMessage = null;
     });
 
+    File? stableUploadFile;
+
     try {
+      final sourceFile = File(video.path);
+
+      if (!await sourceFile.exists()) {
+        throw const PartnerMediaUploadException(
+          'فایل ویدئوی ضبط‌شده روی گوشی در دسترس نیست. لطفاً دوباره ضبط کنید.',
+          code: 'PARTNER_MEDIA_LOCAL_FILE_UNAVAILABLE',
+        );
+      }
+
+      final sourceSize = await sourceFile.length();
+
+      if (sourceSize <= 0) {
+        throw const PartnerMediaUploadException(
+          'فایل ویدئوی ضبط‌شده خالی است. لطفاً دوباره ضبط کنید.',
+          code: 'PARTNER_MEDIA_LOCAL_FILE_EMPTY',
+        );
+      }
+
+      if (sourceSize > 30 * 1024 * 1024) {
+        throw const PartnerMediaUploadException(
+          'حجم ویدئوی زنده‌بودن بیشتر از ۳۰ مگابایت است. لطفاً ویدئوی کوتاه‌تری ضبط کنید.',
+          code: 'PARTNER_MEDIA_FILE_TOO_LARGE',
+        );
+      }
+
+      final previewController = _videoController;
+
+      if (previewController != null && previewController.value.isPlaying) {
+        await previewController.pause();
+      }
+
+      final uploadPath = '${video.path}.secure-upload.mp4';
+      stableUploadFile = await sourceFile.copy(uploadPath);
+
+      final header = await stableUploadFile
+          .openRead(0, 12)
+          .fold<List<int>>(<int>[], (buffer, chunk) => buffer..addAll(chunk));
+      final isMp4 =
+          header.length >= 12 &&
+          header[4] == 0x66 &&
+          header[5] == 0x74 &&
+          header[6] == 0x79 &&
+          header[7] == 0x70;
+
+      if (!isMp4) {
+        throw const PartnerMediaUploadException(
+          'فرمت فایل ضبط‌شده MP4 معتبر نیست. لطفاً ویدئو را دوباره ضبط کنید.',
+          code: 'PARTNER_MEDIA_VIDEO_FORMAT_INVALID',
+        );
+      }
+
+      final uploadedVideo = await _mediaRepository.upload(
+        kind: PartnerMediaKind.livenessVideo,
+        path: stableUploadFile.path,
+        fileName: 'liveness-video.mp4',
+      );
       final result = await _repository.verifyLiveness(
         sessionId: session.sessionId,
         spokenText: session.phrase,
-        videoReference: video.path,
+        videoReference: uploadedVideo.reference,
       );
 
       if (!mounted) {
@@ -734,9 +800,12 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
         );
       }
 
-      _registrationController.updateLivenessVerification(videoPath: video.path);
+      _registrationController.updateLivenessVerification(
+        videoPath: uploadedVideo.reference,
+      );
 
       await _disposeVideo();
+      await _deleteLocalFile(video.path);
 
       if (!mounted) {
         return;
@@ -751,6 +820,14 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
         AppRoutePaths.partnerRegistrationStoreInfo,
         extra: _registrationController.draft,
       );
+    } on PartnerMediaUploadException catch (error) {
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _errorMessage = error.message;
+      });
     } on PartnerVerificationException catch (error) {
       if (!mounted) {
         return;
@@ -763,12 +840,54 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
           code: error.code,
         );
       });
+    } on FileSystemException catch (error, stackTrace) {
+      debugPrint('Liveness video file error: $error');
+      debugPrintStack(stackTrace: stackTrace);
+
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _errorMessage =
+            'خواندن فایل ویدئوی ضبط‌شده ممکن نیست. لطفاً دوباره ضبط کنید.';
+      });
+    } on Object catch (error, stackTrace) {
+      debugPrint('Unexpected liveness upload error: $error');
+      debugPrintStack(stackTrace: stackTrace);
+
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _errorMessage =
+            'بارگذاری ویدئو انجام نشد. لطفاً ارتباط اینترنت را بررسی و دوباره تلاش کنید.';
+      });
     } finally {
+      final uploadFile = stableUploadFile;
+
+      if (uploadFile != null) {
+        await _deleteLocalFile(uploadFile.path);
+      }
+
       if (mounted) {
         setState(() {
           _isVerifying = false;
         });
       }
+    }
+  }
+
+  Future<void> _deleteLocalFile(String path) async {
+    try {
+      final file = File(path);
+
+      if (await file.exists()) {
+        await file.delete();
+      }
+    } on FileSystemException {
+      // The encrypted server copy is already stored; local cleanup is best effort.
     }
   }
 
