@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import 'package:address/core/network/api_client.dart';
 import 'package:address/features/partner_registration/data/models/partner_application.dart';
+import 'package:address/features/partner_registration/data/partner_media_repository.dart';
 import 'package:address/features/partner_registration/domain/models/partner_registration_draft.dart';
 
 class PartnerApplicationException implements Exception {
@@ -18,9 +19,13 @@ class PartnerApplicationException implements Exception {
 
 class PartnerApplicationsRepository {
   PartnerApplicationsRepository({Dio? dio})
-    : _dio = dio ?? ApiClient.instance.dio;
+    : _dio = dio ?? ApiClient.instance.dio,
+      _mediaRepository = PartnerMediaRepository(
+        dio: dio ?? ApiClient.instance.dio,
+      );
 
   final Dio _dio;
+  final PartnerMediaRepository _mediaRepository;
 
   String createClientRequestId() {
     final random = Random.secure();
@@ -47,7 +52,10 @@ class PartnerApplicationsRepository {
     try {
       final response = await _dio.post<dynamic>(
         '/partner-applications',
-        data: _createPayload(draft: draft, clientRequestId: clientRequestId),
+        data: await _createPayload(
+          draft: draft,
+          clientRequestId: clientRequestId,
+        ),
       );
 
       return PartnerApplicationSubmission.fromJson(_readObject(response.data));
@@ -56,6 +64,8 @@ class PartnerApplicationsRepository {
         _readErrorMessage(error),
         code: _readErrorCode(error),
       );
+    } on PartnerMediaUploadException catch (error) {
+      throw PartnerApplicationException(error.message, code: error.code);
     } on PartnerApplicationException {
       rethrow;
     } catch (_) {
@@ -80,7 +90,10 @@ class PartnerApplicationsRepository {
     try {
       final response = await _dio.post<dynamic>(
         '/partner-applications/$applicationId/resubmit',
-        data: _createPayload(draft: draft, clientRequestId: clientRequestId),
+        data: await _createPayload(
+          draft: draft,
+          clientRequestId: clientRequestId,
+        ),
       );
 
       return PartnerApplicationSubmission.fromJson(_readObject(response.data));
@@ -89,6 +102,8 @@ class PartnerApplicationsRepository {
         _readErrorMessage(error),
         code: _readErrorCode(error),
       );
+    } on PartnerMediaUploadException catch (error) {
+      throw PartnerApplicationException(error.message, code: error.code);
     } on PartnerApplicationException {
       rethrow;
     } catch (_) {
@@ -144,10 +159,10 @@ class PartnerApplicationsRepository {
     }
   }
 
-  Map<String, Object?> _createPayload({
+  Future<Map<String, Object?>> _createPayload({
     required PartnerRegistrationDraft draft,
     required String clientRequestId,
-  }) {
+  }) async {
     final applicantType = draft.applicantType;
     final ownership = draft.storeOwnership;
     final postalLatitude = draft.postalLatitude;
@@ -167,29 +182,31 @@ class PartnerApplicationsRepository {
     }
 
     final documents = <String, Object?>{
-      'nationalCard': _documentReference(
+      'nationalCard': await _secureDocumentReference(
+        kind: PartnerMediaKind.nationalCard,
         fileName: draft.nationalCardImageName,
         reference: draft.nationalCardImagePath,
       ),
-      'signboard': _documentReference(
+      'signboard': await _secureDocumentReference(
+        kind: PartnerMediaKind.signboard,
         fileName: draft.signboardImageName,
         reference: draft.signboardImagePath,
       ),
-      'ownershipDocument': _documentReference(
+      'ownershipDocument': await _secureDocumentReference(
+        kind: PartnerMediaKind.ownershipDocument,
         fileName: draft.ownershipDocumentImageName,
         reference: draft.ownershipDocumentImagePath,
       ),
-      'livenessVideo': _documentReference(
-        fileName: _fileNameFromPath(
-          draft.livenessVideoPath,
-          fallback: 'liveness-video.mp4',
-        ),
+      'livenessVideo': await _secureDocumentReference(
+        kind: PartnerMediaKind.livenessVideo,
+        fileName: 'liveness-video.mp4',
         reference: draft.livenessVideoPath,
       ),
     };
 
     if (draft.licenseImagePath.trim().isNotEmpty) {
-      documents['license'] = _documentReference(
+      documents['license'] = await _secureDocumentReference(
+        kind: PartnerMediaKind.license,
         fileName: draft.licenseImageName,
         reference: draft.licenseImagePath,
       );
@@ -244,15 +261,37 @@ class PartnerApplicationsRepository {
     };
   }
 
-  Map<String, String> _documentReference({
+  Future<Map<String, String>> _secureDocumentReference({
+    required PartnerMediaKind kind,
     required String fileName,
     required String reference,
-  }) {
+  }) async {
+    final normalizedReference = reference.trim();
+    final normalizedFileName = fileName.trim().isEmpty
+        ? _fileNameFromPath(
+            normalizedReference,
+            fallback: kind == PartnerMediaKind.livenessVideo
+                ? 'liveness-video.mp4'
+                : 'document',
+          )
+        : fileName.trim();
+
+    if (PartnerMediaRepository.isSecureReference(normalizedReference)) {
+      return <String, String>{
+        'fileName': normalizedFileName,
+        'reference': normalizedReference,
+      };
+    }
+
+    final uploaded = await _mediaRepository.upload(
+      kind: kind,
+      path: normalizedReference,
+      fileName: normalizedFileName,
+    );
+
     return <String, String>{
-      'fileName': fileName.trim().isEmpty
-          ? _fileNameFromPath(reference, fallback: 'document')
-          : fileName.trim(),
-      'reference': reference.trim(),
+      'fileName': uploaded.fileName,
+      'reference': uploaded.reference,
     };
   }
 
@@ -289,6 +328,17 @@ class PartnerApplicationsRepository {
   }
 
   String _readErrorMessage(DioException error) {
+    final code = _readErrorCode(error);
+
+    switch (code) {
+      case 'PARTNER_APPLICATION_REJECTED_DUPLICATE':
+        return 'درخواستی با همین هویت، زمینه فعالیت و کد پستی قبلاً رد شده است و امکان ثبت مجدد با همین مشخصات وجود ندارد.';
+      case 'PARTNER_MEDIA_UPLOAD_REQUIRED':
+        return 'برای ارسال درخواست، همه مدارک لازم باید به‌صورت امن بارگذاری شوند.';
+      case 'PARTNER_MEDIA_REFERENCE_INVALID':
+        return 'مرجع امن یکی از مدارک معتبر نیست. لطفاً مدرک را دوباره ثبت کنید.';
+    }
+
     final data = error.response?.data;
 
     if (data is Map) {
