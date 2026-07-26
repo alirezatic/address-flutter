@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:address/app/auth_route_redirect.dart';
 import 'package:address/app/route_paths.dart';
 import 'package:address/features/admin_shop_access/presentation/screens/admin_shop_access_screen.dart';
 import 'package:address/features/auth/application/auth_session_controller.dart';
@@ -54,26 +55,19 @@ abstract final class AppRouter {
     redirect: (context, state) async {
       final location = state.matchedLocation;
 
+      final authRedirect = resolveAuthRouteRedirect(
+        location: location,
+        isAuthenticated: _authSession.isAuthenticated,
+        isRegistrationComplete: _authSession.isRegistrationComplete,
+      );
+
       if (!_authSession.isAuthenticated) {
         _capabilities.clear();
-
-        if (location == onboardingPath) {
-          return null;
-        }
-
-        return onboardingPath;
+        return authRedirect;
       }
 
-      if (!_authSession.isRegistrationComplete) {
-        return location == registrationPath ? null : registrationPath;
-      }
-
-      if (location == rootPath || location == onboardingPath) {
-        return homePath;
-      }
-
-      if (location == registrationPath) {
-        return homePath;
+      if (authRedirect != null) {
+        return authRedirect;
       }
 
       if (location == adminShopAccessPath) {
