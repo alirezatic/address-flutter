@@ -405,7 +405,7 @@ abstract class AppLocalizations {
   /// عنوان خدمات غذایی
   ///
   /// In fa, this message translates to:
-  /// **'غذاوفروشگاه'**
+  /// **'غذا و\nفروشگاه'**
   String get foodServices;
 
   /// عنوان خدمات عمومی
@@ -417,7 +417,7 @@ abstract class AppLocalizations {
   /// عنوان خدمات تعمیرات
   ///
   /// In fa, this message translates to:
-  /// **'تعمیر و قطعات یدکی'**
+  /// **'تعمیر و\nقطعات یدکی'**
   String get repairServices;
 
   /// عنوان خدمات بیمه‌ای

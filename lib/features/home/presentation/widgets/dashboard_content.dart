@@ -162,7 +162,7 @@ class _DashboardContentState extends State<DashboardContent> {
                       .toDouble();
 
                   final crossAxisCount = contentWidth < 680 ? 2 : 3;
-                  final sectionAspectRatio = contentWidth < 430 ? 1.65 : 2.15;
+                  final sectionAspectRatio = contentWidth < 430 ? 2.30 : 2.15;
 
                   return SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
@@ -180,7 +180,7 @@ class _DashboardContentState extends State<DashboardContent> {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            const SizedBox(height: 14),
+                            const SizedBox(height: 0),
                             Center(
                               child: SizedBox(
                                 width: carouselWidth,
@@ -250,7 +250,7 @@ class _DashboardContentState extends State<DashboardContent> {
                                                       TextDirection.rtl)
                                                   ? 2
                                                   : 8,
-                                              vertical: 30,
+                                              vertical: 18,
                                             ),
                                             child: Transform(
                                               alignment: Alignment.center,
@@ -331,7 +331,7 @@ class _DashboardContentState extends State<DashboardContent> {
                                 }),
                               ),
                             ),
-                            const SizedBox(height: 28),
+                            const SizedBox(height: 12),
                             GridView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),

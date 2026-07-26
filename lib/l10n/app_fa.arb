@@ -219,7 +219,7 @@
                            "description":  "عنوان خدمات باربری",
                            "type":  "text"
                        },
-    "foodServices":  "غذاوفروشگاه",
+    "foodServices":  "غذا و\nفروشگاه",
     "@foodServices":  {
                           "description":  "عنوان خدمات غذایی",
                           "type":  "text"
@@ -229,7 +229,7 @@
                              "description":  "عنوان خدمات عمومی",
                              "type":  "text"
                          },
-    "repairServices":  "تعمیر و قطعات یدکی",
+    "repairServices":  "تعمیر و\nقطعات یدکی",
     "@repairServices":  {
                             "description":  "عنوان خدمات تعمیرات",
                             "type":  "text"

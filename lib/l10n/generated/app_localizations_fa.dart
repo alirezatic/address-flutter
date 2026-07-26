@@ -166,13 +166,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get cargoServices => 'بارو کالا';
 
   @override
-  String get foodServices => 'غذاوفروشگاه';
+  String get foodServices => 'غذا و\nفروشگاه';
 
   @override
   String get generalServices => ' عمومی';
 
   @override
-  String get repairServices => 'تعمیر و قطعات یدکی';
+  String get repairServices => 'تعمیر و\nقطعات یدکی';
 
   @override
   String get insuranceServices => 'همکاران آدرس';

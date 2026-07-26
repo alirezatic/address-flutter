@@ -50,14 +50,14 @@ class ServiceSectionCard extends StatelessWidget {
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final imageSize = (constraints.maxHeight * 0.55)
-                    .clamp(44, 66)
+                final imageSize = (constraints.maxHeight * 0.46)
+                    .clamp(36, 52)
                     .toDouble();
 
                 return Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 10,
+                    horizontal: 10,
+                    vertical: 6,
                   ),
                   child: Row(
                     children: [
