@@ -23,8 +23,7 @@ abstract final class AppRoutePaths {
       '/partners/registration/store-info';
   static const String partnerRegistrationMapConfirmation =
       '/partners/registration/map-confirmation';
-  static const String partnerApplicationSuccess =
-      '/partners/registration/success';
+
   static const String partnerApplicationCorrection =
       '/partners/registration/correction';
   static const String partnerApplications = '/partners/applications';
