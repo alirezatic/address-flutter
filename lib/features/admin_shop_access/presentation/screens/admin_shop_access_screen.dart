@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:address/core/design_system/components/buttons/animated_start_button.dart';
 import 'package:address/features/admin_shop_access/domain/entities/admin_shop_access_entry.dart';
 import 'package:address/features/admin_shop_access/domain/entities/admin_shop_access_failure.dart';
 import 'package:address/features/admin_shop_access/domain/entities/admin_shop_access_mutation.dart';
@@ -405,15 +406,12 @@ class _AccessFormCard extends StatelessWidget {
                     icon: const Icon(Icons.person_remove_outlined),
                     label: Text(localizations.revokeAccess),
                   ),
-                  FilledButton.icon(
-                    onPressed: isBusy ? null : onGrant,
-                    icon: isBusy
-                        ? const SizedBox.square(
-                            dimension: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Icon(Icons.verified_user_outlined),
-                    label: Text(localizations.grantAccess),
+                  AnimatedStartButton(
+                    onTap: onGrant,
+                    isLoading: isBusy,
+                    isEnabled: !isBusy,
+                    title: localizations.grantAccess,
+                    icon: Icons.verified_user_outlined,
                   ),
                 ],
               ),
