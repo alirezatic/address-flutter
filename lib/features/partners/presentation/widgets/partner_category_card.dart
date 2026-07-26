@@ -66,7 +66,7 @@ class PartnerCategoryCard extends StatelessWidget {
               Flexible(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacingTokens.small,
+                    horizontal: AppSpacingTokens.xSmall,
                     vertical: AppSpacingTokens.xSmall,
                   ),
                   decoration: BoxDecoration(
@@ -74,15 +74,18 @@ class PartnerCategoryCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppRadiusTokens.pill),
                     border: Border.all(color: colors.outlineVariant),
                   ),
-                  child: Text(
-                    localizations.partnersSubcategoryCount(
-                      category.items.length,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: colors.onSurfaceVariant,
-                      fontWeight: FontWeight.w700,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                      localizations.partnersSubcategoryCount(
+                        category.items.length,
+                      ),
+                      maxLines: 1,
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: colors.onSurfaceVariant,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),
@@ -99,20 +102,24 @@ class PartnerCategoryCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       category.id.title(localizations),
-                      maxLines: 1,
+                      maxLines: 2,
+                      softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.titleSmall?.copyWith(
                         color: colors.onSurface,
                         fontWeight: FontWeight.w900,
+                        height: 1.2,
                       ),
                     ),
                     const SizedBox(height: AppSpacingTokens.xSmall),
                     Text(
                       category.id.subtitle(localizations),
-                      maxLines: 1,
+                      maxLines: 2,
+                      softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: colors.onSurfaceVariant,
+                        height: 1.25,
                       ),
                     ),
                   ],
