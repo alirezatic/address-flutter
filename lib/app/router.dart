@@ -73,7 +73,7 @@ abstract final class AppRouter {
       }
 
       if (location == registrationPath) {
-        return null;
+        return homePath;
       }
 
       if (location == adminShopAccessPath) {
