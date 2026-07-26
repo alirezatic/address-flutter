@@ -1448,6 +1448,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registrationChangePhone => 'Change mobile number';
 
   @override
+  String get registrationExitAction => 'Cancel registration';
+
+  @override
+  String get registrationExitTitle => 'Exit registration?';
+
+  @override
+  String get registrationExitMessage =>
+      'Your registration is not complete. If you exit, the information entered on this page will not be saved, and you can register again later.';
+
+  @override
+  String get registrationExitContinue => 'Continue registration';
+
+  @override
+  String get registrationExitConfirm => 'Exit registration';
+
+  @override
   String get registrationTermsRequired =>
       'You must accept the terms and privacy policy to continue.';
 

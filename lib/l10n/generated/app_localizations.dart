@@ -2736,6 +2736,36 @@ abstract class AppLocalizations {
   /// **'تغییر شماره موبایل'**
   String get registrationChangePhone;
 
+  /// No description provided for @registrationExitAction.
+  ///
+  /// In fa, this message translates to:
+  /// **'انصراف از ثبت‌نام'**
+  String get registrationExitAction;
+
+  /// No description provided for @registrationExitTitle.
+  ///
+  /// In fa, this message translates to:
+  /// **'خروج از ثبت‌نام؟'**
+  String get registrationExitTitle;
+
+  /// No description provided for @registrationExitMessage.
+  ///
+  /// In fa, this message translates to:
+  /// **'ثبت‌نام شما هنوز کامل نشده است. با خروج، اطلاعات واردشده در این صفحه ذخیره نمی‌شود و می‌توانید بعداً دوباره ثبت‌نام کنید.'**
+  String get registrationExitMessage;
+
+  /// No description provided for @registrationExitContinue.
+  ///
+  /// In fa, this message translates to:
+  /// **'ادامه ثبت‌نام'**
+  String get registrationExitContinue;
+
+  /// No description provided for @registrationExitConfirm.
+  ///
+  /// In fa, this message translates to:
+  /// **'خروج از ثبت‌نام'**
+  String get registrationExitConfirm;
+
   /// No description provided for @registrationTermsRequired.
   ///
   /// In fa, this message translates to:

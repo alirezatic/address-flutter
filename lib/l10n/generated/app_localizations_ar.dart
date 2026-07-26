@@ -1427,6 +1427,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get registrationChangePhone => 'تغيير رقم الجوال';
 
   @override
+  String get registrationExitAction => 'إلغاء التسجيل';
+
+  @override
+  String get registrationExitTitle => 'الخروج من التسجيل؟';
+
+  @override
+  String get registrationExitMessage =>
+      'لم يكتمل تسجيلك بعد. عند الخروج، لن يتم حفظ المعلومات المدخلة في هذه الصفحة، ويمكنك التسجيل مرة أخرى لاحقًا.';
+
+  @override
+  String get registrationExitContinue => 'متابعة التسجيل';
+
+  @override
+  String get registrationExitConfirm => 'الخروج من التسجيل';
+
+  @override
   String get registrationTermsRequired =>
       'يجب الموافقة على الشروط وسياسة الخصوصية للمتابعة.';
 

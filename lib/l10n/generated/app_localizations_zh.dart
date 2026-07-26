@@ -1341,6 +1341,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String get registrationChangePhone => '更换手机号';
 
   @override
+  String get registrationExitAction => '取消注册';
+
+  @override
+  String get registrationExitTitle => '退出注册？';
+
+  @override
+  String get registrationExitMessage => '您的注册尚未完成。退出后，本页已输入的信息不会保存，您可以稍后重新注册。';
+
+  @override
+  String get registrationExitContinue => '继续注册';
+
+  @override
+  String get registrationExitConfirm => '退出注册';
+
+  @override
   String get registrationTermsRequired => '继续前必须接受使用条款和隐私政策。';
 
   @override

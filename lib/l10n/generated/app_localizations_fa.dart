@@ -1435,6 +1435,22 @@ class AppLocalizationsFa extends AppLocalizations {
   String get registrationChangePhone => 'تغییر شماره موبایل';
 
   @override
+  String get registrationExitAction => 'انصراف از ثبت‌نام';
+
+  @override
+  String get registrationExitTitle => 'خروج از ثبت‌نام؟';
+
+  @override
+  String get registrationExitMessage =>
+      'ثبت‌نام شما هنوز کامل نشده است. با خروج، اطلاعات واردشده در این صفحه ذخیره نمی‌شود و می‌توانید بعداً دوباره ثبت‌نام کنید.';
+
+  @override
+  String get registrationExitContinue => 'ادامه ثبت‌نام';
+
+  @override
+  String get registrationExitConfirm => 'خروج از ثبت‌نام';
+
+  @override
   String get registrationTermsRequired =>
       'برای ادامه باید قوانین و حریم خصوصی را بپذیرید.';
 

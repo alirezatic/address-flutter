@@ -8,6 +8,7 @@ import 'package:address/features/auth/application/auth_session_controller.dart';
 import 'package:address/features/auth/domain/entities/auth_failure.dart';
 import 'package:address/features/auth/domain/entities/auth_user.dart';
 import 'package:address/core/design_system/components/buttons/animated_start_button.dart';
+import 'package:address/core/design_system/components/layout/app_page_scaffold.dart';
 import 'package:address/features/profile/data/profile_image_picker.dart';
 import 'package:address/features/profile/domain/entities/selected_profile_image.dart';
 import 'package:address/features/profile/presentation/widgets/profile_avatar.dart';
@@ -35,6 +36,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _isPickingAvatar = false;
   bool _isSubmitting = false;
 
+  bool _isExitDialogVisible = false;
   @override
   void initState() {
     super.initState();
@@ -231,16 +233,55 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  Future<void> _changePhone() async {
-    if (_isSubmitting) {
+  Future<void> _requestExitRegistration() async {
+    if (_isSubmitting || _isExitDialogVisible) {
       return;
     }
 
-    await _authSession.signOut();
+    FocusManager.instance.primaryFocus?.unfocus();
+    _isExitDialogVisible = true;
 
-    if (mounted) {
-      context.go(AppRoutePaths.onboarding);
+    final localizations = AppLocalizations.of(context);
+    final shouldExit = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) {
+        return AlertDialog(
+          icon: const Icon(Icons.logout_rounded),
+          title: Text(localizations.registrationExitTitle),
+          content: Text(localizations.registrationExitMessage),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: Text(localizations.registrationExitContinue),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: Text(localizations.registrationExitConfirm),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (shouldExit != true) {
+      _isExitDialogVisible = false;
+      return;
     }
+
+    try {
+      await _authSession.signOut();
+
+      if (mounted) {
+        context.go(AppRoutePaths.onboarding);
+      }
+    } finally {
+      _isExitDialogVisible = false;
+    }
+  }
+
+  Future<void> _changePhone() {
+    return _requestExitRegistration();
   }
 
   void _showMessage(String message) {
@@ -274,9 +315,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     return PopScope(
       canPop: false,
-      child: Scaffold(
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          _requestExitRegistration();
+        }
+      },
+      child: AppPageScaffold(
         backgroundColor: colorScheme.surface,
+        navigationIcon: Icons.close_rounded,
+        navigationLabel: localizations.registrationExitAction,
+        onNavigationPressed: _requestExitRegistration,
         body: SafeArea(
+          top: false,
           child: LayoutBuilder(
             builder: (context, constraints) {
               final horizontalPadding = constraints.maxWidth < 430
@@ -287,9 +337,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.fromLTRB(
                   horizontalPadding,
-                  24,
+                  8,
                   horizontalPadding,
-                  36,
+                  20,
                 ),
                 child: Center(
                   child: ConstrainedBox(
@@ -304,7 +354,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               alignment: Alignment.center,
                               children: <Widget>[
                                 ProfileAvatar(
-                                  size: 112,
+                                  size: 88,
                                   imageBytes: _avatar?.bytes,
                                   displayName:
                                       '${_firstNameController.text} '
@@ -330,7 +380,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               color: colorScheme.onSurfaceVariant,
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 12),
                           Text(
                             localizations.registrationTitle,
                             style: textTheme.headlineSmall?.copyWith(
@@ -347,14 +397,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 28),
+                          const SizedBox(height: 12),
                           _RegistrationTextField(
                             controller: _firstNameController,
                             label: localizations.registrationFirstName,
                             textInputAction: TextInputAction.next,
                             validator: _validateName,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 10),
                           _RegistrationTextField(
                             controller: _lastNameController,
                             label: localizations.registrationLastName,
@@ -362,12 +412,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             validator: _validateName,
                             onSubmitted: (_) => _submit(),
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 10),
                           _VerifiedPhoneCard(
                             label: localizations.registrationVerifiedPhone,
                             phone: displayPhone,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 10),
                           CheckboxListTile(
                             value: _termsAccepted,
                             contentPadding: EdgeInsets.zero,
@@ -384,7 +434,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     });
                                   },
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 10),
                           Center(
                             child: Directionality(
                               textDirection: TextDirection.ltr,
@@ -397,7 +447,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 14),
+                          const SizedBox(height: 6),
                           TextButton(
                             onPressed: _isSubmitting ? null : _changePhone,
                             child: Text(localizations.registrationChangePhone),
