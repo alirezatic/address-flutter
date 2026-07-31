@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:address/app/auth_route_redirect.dart';
+import 'package:address/app/distribution_route_redirect.dart';
 import 'package:address/app/route_paths.dart';
 import 'package:address/features/admin_shop_access/presentation/screens/admin_shop_access_screen.dart';
 import 'package:address/features/auth/application/auth_session_controller.dart';
@@ -68,6 +69,19 @@ abstract final class AppRouter {
 
       if (authRedirect != null) {
         return authRedirect;
+      }
+
+      if (isDistributionRouteLocation(location)) {
+        await _capabilities.ensureLoaded();
+
+        final distributionRedirect = resolveDistributionRouteRedirect(
+          location: location,
+          canViewDistributionOrders: _capabilities.canViewDistributionOrders,
+        );
+
+        if (distributionRedirect != null) {
+          return distributionRedirect;
+        }
       }
 
       if (location == adminShopAccessPath) {
