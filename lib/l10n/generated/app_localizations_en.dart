@@ -235,6 +235,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'Could not connect to the server. Check your network connection.';
 
   @override
+  String get distributionUnauthorized =>
+      'Your session is no longer valid. Sign in again.';
+
+  @override
+  String get distributionForbidden =>
+      'This account is not allowed to view distribution orders.';
+
+  @override
   String get distributionServerError =>
       'The distribution service is temporarily unavailable.';
 

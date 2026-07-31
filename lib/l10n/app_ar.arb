@@ -257,6 +257,8 @@
   "distributionLoading": "جارٍ تحميل الطلبات...",
   "distributionLoadError": "تعذر تحميل الطلبات",
   "distributionNetworkError": "تعذر الاتصال بالخادم. تحقق من اتصال الشبكة.",
+  "distributionUnauthorized": "انتهت صلاحية الجلسة. سجّل الدخول مجدداً.",
+  "distributionForbidden": "هذا الحساب غير مخول لعرض طلبات التوزيع.",
   "distributionServerError": "خدمة التوزيع غير متاحة مؤقتاً.",
   "distributionInvalidResponse": "أعادت خدمة التوزيع استجابة غير صالحة.",
   "distributionOrderNotFound": "تعذر العثور على الطلب المطلوب.",

@@ -234,6 +234,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعذر الاتصال بالخادم. تحقق من اتصال الشبكة.';
 
   @override
+  String get distributionUnauthorized =>
+      'انتهت صلاحية الجلسة. سجّل الدخول مجدداً.';
+
+  @override
+  String get distributionForbidden => 'هذا الحساب غير مخول لعرض طلبات التوزيع.';
+
+  @override
   String get distributionServerError => 'خدمة التوزيع غير متاحة مؤقتاً.';
 
   @override

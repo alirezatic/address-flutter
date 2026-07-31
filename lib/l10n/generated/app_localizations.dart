@@ -534,6 +534,18 @@ abstract class AppLocalizations {
   /// **'ارتباط با سرور برقرار نشد. اتصال شبکه را بررسی کنید.'**
   String get distributionNetworkError;
 
+  /// No description provided for @distributionUnauthorized.
+  ///
+  /// In fa, this message translates to:
+  /// **'نشست شما معتبر نیست. دوباره وارد حساب شوید.'**
+  String get distributionUnauthorized;
+
+  /// No description provided for @distributionForbidden.
+  ///
+  /// In fa, this message translates to:
+  /// **'این حساب اجازه مشاهده سفارش‌های توزیع را ندارد.'**
+  String get distributionForbidden;
+
   /// No description provided for @distributionServerError.
   ///
   /// In fa, this message translates to:

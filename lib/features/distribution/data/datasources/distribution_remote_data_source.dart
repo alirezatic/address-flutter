@@ -114,6 +114,22 @@ class DistributionRemoteDataSource {
     final statusCode = error.response?.statusCode;
     final message = _extractMessage(error.response?.data) ?? error.message;
 
+    if (statusCode == 401) {
+      return DistributionFailure(
+        kind: DistributionFailureKind.unauthorized,
+        message: message,
+        statusCode: statusCode,
+      );
+    }
+
+    if (statusCode == 403) {
+      return DistributionFailure(
+        kind: DistributionFailureKind.forbidden,
+        message: message,
+        statusCode: statusCode,
+      );
+    }
+
     if (statusCode == 404) {
       return DistributionFailure(
         kind: DistributionFailureKind.notFound,

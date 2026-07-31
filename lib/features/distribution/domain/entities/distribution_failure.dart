@@ -1,4 +1,11 @@
-enum DistributionFailureKind { network, notFound, server, invalidResponse }
+enum DistributionFailureKind {
+  unauthorized,
+  forbidden,
+  network,
+  notFound,
+  server,
+  invalidResponse,
+}
 
 class DistributionFailure implements Exception {
   const DistributionFailure({
