@@ -24,6 +24,10 @@ class UserCapabilitiesController extends ChangeNotifier {
       state == UserCapabilitiesState.loaded &&
       capabilities?.isPlatformAdmin == true;
 
+  bool get canViewDistributionOrders =>
+      state == UserCapabilitiesState.loaded &&
+      capabilities?.viewDistributionOrders == true;
+
   bool get canRetry =>
       state == UserCapabilitiesState.idle ||
       state == UserCapabilitiesState.error ||
