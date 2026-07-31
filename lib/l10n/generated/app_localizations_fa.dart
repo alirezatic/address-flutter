@@ -234,6 +234,14 @@ class AppLocalizationsFa extends AppLocalizations {
       'ارتباط با سرور برقرار نشد. اتصال شبکه را بررسی کنید.';
 
   @override
+  String get distributionUnauthorized =>
+      'نشست شما معتبر نیست. دوباره وارد حساب شوید.';
+
+  @override
+  String get distributionForbidden =>
+      'این حساب اجازه مشاهده سفارش‌های توزیع را ندارد.';
+
+  @override
   String get distributionServerError => 'سرویس توزیع موقتاً در دسترس نیست.';
 
   @override

@@ -229,6 +229,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get distributionNetworkError => '无法连接服务器，请检查网络连接。';
 
   @override
+  String get distributionUnauthorized => '当前会话已失效，请重新登录。';
+
+  @override
+  String get distributionForbidden => '此账户无权查看配送订单。';
+
+  @override
   String get distributionServerError => '配送服务暂时不可用。';
 
   @override

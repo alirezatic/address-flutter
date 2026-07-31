@@ -171,6 +171,9 @@ class _DistributionOrdersScreenState extends State<DistributionOrdersScreen> {
     }
 
     return switch (failure.kind) {
+      DistributionFailureKind.unauthorized =>
+        localizations.distributionUnauthorized,
+      DistributionFailureKind.forbidden => localizations.distributionForbidden,
       DistributionFailureKind.network => localizations.distributionNetworkError,
       DistributionFailureKind.notFound =>
         localizations.distributionOrderNotFound,

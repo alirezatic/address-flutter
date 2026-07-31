@@ -257,6 +257,8 @@
   "distributionLoading": "正在加载订单...",
   "distributionLoadError": "无法加载订单",
   "distributionNetworkError": "无法连接服务器，请检查网络连接。",
+  "distributionUnauthorized": "当前会话已失效，请重新登录。",
+  "distributionForbidden": "此账户无权查看配送订单。",
   "distributionServerError": "配送服务暂时不可用。",
   "distributionInvalidResponse": "配送服务返回了无效响应。",
   "distributionOrderNotFound": "未找到所请求的订单。",

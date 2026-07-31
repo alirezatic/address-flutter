@@ -257,6 +257,8 @@
     "distributionLoading":  "در حال دریافت سفارش‌ها...",
     "distributionLoadError":  "دریافت سفارش‌ها ممکن نشد",
     "distributionNetworkError":  "ارتباط با سرور برقرار نشد. اتصال شبکه را بررسی کنید.",
+    "distributionUnauthorized": "نشست شما معتبر نیست. دوباره وارد حساب شوید.",
+    "distributionForbidden": "این حساب اجازه مشاهده سفارش‌های توزیع را ندارد.",
     "distributionServerError":  "سرویس توزیع موقتاً در دسترس نیست.",
     "distributionInvalidResponse":  "پاسخ سرویس توزیع قابل پردازش نیست.",
     "distributionOrderNotFound":  "سفارش موردنظر پیدا نشد.",

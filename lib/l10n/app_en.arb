@@ -257,6 +257,8 @@
     "distributionLoading":  "Loading orders...",
     "distributionLoadError":  "Could not load orders",
     "distributionNetworkError":  "Could not connect to the server. Check your network connection.",
+    "distributionUnauthorized": "Your session is no longer valid. Sign in again.",
+    "distributionForbidden": "This account is not allowed to view distribution orders.",
     "distributionServerError":  "The distribution service is temporarily unavailable.",
     "distributionInvalidResponse":  "The distribution service returned an invalid response.",
     "distributionOrderNotFound":  "The requested order was not found.",
