@@ -214,7 +214,7 @@
                                "description":  "عنوان خدمات مسافرتی",
                                "type":  "text"
                            },
-    "cargoServices":  "بارو کالا",
+    "cargoServices":  "کالا و بار",
     "@cargoServices":  {
                            "description":  "عنوان خدمات باربری",
                            "type":  "text"

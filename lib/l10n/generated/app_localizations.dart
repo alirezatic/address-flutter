@@ -399,7 +399,7 @@ abstract class AppLocalizations {
   /// عنوان خدمات باربری
   ///
   /// In fa, this message translates to:
-  /// **'بارو کالا'**
+  /// **'کالا و بار'**
   String get cargoServices;
 
   /// عنوان خدمات غذایی

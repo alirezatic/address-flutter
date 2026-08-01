@@ -69,22 +69,6 @@ class _DashboardContentState extends State<DashboardContent> {
       ..showSnackBar(SnackBar(content: Text(localizations.comingSoon)));
   }
 
-  Future<void> _openDistributionOrders() async {
-    if (_navigationIndex != 1) {
-      setState(() {
-        _navigationIndex = 1;
-      });
-    }
-
-    await context.push(AppRoutePaths.distributionOrders);
-
-    if (mounted && _navigationIndex == 1) {
-      setState(() {
-        _navigationIndex = 0;
-      });
-    }
-  }
-
   Future<void> _openAddressPartners() async {
     await context.push(AppRoutePaths.addressPartners);
   }
@@ -103,11 +87,6 @@ class _DashboardContentState extends State<DashboardContent> {
     return InkWell(
       borderRadius: BorderRadius.circular(22),
       onTap: () async {
-        if (index == 1) {
-          await _openDistributionOrders();
-          return;
-        }
-
         setState(() {
           _navigationIndex = index;
         });
@@ -350,7 +329,6 @@ class _DashboardContentState extends State<DashboardContent> {
                                 return ServiceSectionCard(
                                   service: service,
                                   onTap: switch (service.key) {
-                                    ServiceKey.cargo => _openDistributionOrders,
                                     ServiceKey.insurance =>
                                       _openAddressPartners,
                                     _ => _showComingSoon,
@@ -405,11 +383,6 @@ class _DashboardContentState extends State<DashboardContent> {
                             context,
                             Icons.directions_car_filled_rounded,
                             0,
-                          ),
-                          _buildNavigationItem(
-                            context,
-                            Icons.local_shipping_rounded,
-                            1,
                           ),
                           _buildNavigationItem(
                             context,
