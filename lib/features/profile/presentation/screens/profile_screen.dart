@@ -2431,9 +2431,8 @@ class _ProfileNavigationCard extends StatelessWidget {
       ),
     ];
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
-        color: colors.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(AppRadiusTokens.card),
         boxShadow: <BoxShadow>[
           BoxShadow(
@@ -2443,38 +2442,46 @@ class _ProfileNavigationCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        children: <Widget>[
-          for (var index = 0; index < items.length; index++) ...<Widget>[
-            ListTile(
-              leading: Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF072044).withValues(alpha: 0.07),
-                  borderRadius: BorderRadius.circular(AppRadiusTokens.small),
+      child: Material(
+        color: colors.surfaceContainerLowest,
+        borderRadius: BorderRadius.circular(AppRadiusTokens.card),
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            for (var index = 0; index < items.length; index++) ...<Widget>[
+              ListTile(
+                leading: Container(
+                  width: 42,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF072044).withValues(alpha: 0.07),
+                    borderRadius: BorderRadius.circular(AppRadiusTokens.small),
+                  ),
+                  child: Icon(
+                    items[index].icon,
+                    color: const Color(0xFF072044),
+                  ),
                 ),
-                child: Icon(items[index].icon, color: const Color(0xFF072044)),
-              ),
-              title: Text(
-                items[index].label,
-                style: const TextStyle(fontWeight: FontWeight.w800),
-              ),
-              trailing: const Icon(
-                Icons.chevron_left_rounded,
-                color: Color(0xFF072044),
-              ),
-              onTap: items[index].onTap,
-            ),
-            if (index != items.length - 1)
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacingTokens.large,
+                title: Text(
+                  items[index].label,
+                  style: const TextStyle(fontWeight: FontWeight.w800),
                 ),
-                child: _ProfileDivider(colors: colors),
+                trailing: const Icon(
+                  Icons.chevron_left_rounded,
+                  color: Color(0xFF072044),
+                ),
+                onTap: items[index].onTap,
               ),
+              if (index != items.length - 1)
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacingTokens.large,
+                  ),
+                  child: _ProfileDivider(colors: colors),
+                ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

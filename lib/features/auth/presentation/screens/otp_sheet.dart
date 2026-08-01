@@ -363,180 +363,209 @@ class _OtpSheetState extends State<OtpSheet> {
                         child: Stack(
                           clipBehavior: Clip.none,
                           children: [
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    colorScheme.surface.withValues(alpha: 0.9),
-                                    colorScheme.surfaceContainerHighest,
-                                    colorScheme.surfaceContainer.withValues(
-                                      alpha: 0.5,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
                               child: Container(
-                                padding: EdgeInsets.fromLTRB(
-                                  cardPadding,
-                                  cardPadding,
-                                  cardPadding,
-                                  cardPadding + 16,
-                                ),
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(1),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  color: colorScheme.surface,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: colorScheme.shadow.withValues(
-                                        alpha: 0.18,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      colorScheme.surface.withValues(
+                                        alpha: 0.9,
                                       ),
-                                      offset: const Offset(0, 8),
-                                      blurRadius: 20,
-                                    ),
-                                  ],
+                                      colorScheme.surfaceContainerHighest,
+                                      colorScheme.surfaceContainer.withValues(
+                                        alpha: 0.5,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      localizations.welcome,
-                                      style: textTheme.titleLarge?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: colorScheme.onSurface,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Divider(
-                                      color: colorScheme.outlineVariant
-                                          .withValues(alpha: 0.5),
-                                    ),
-                                    const SizedBox(height: 12),
-                                    Text(
-                                      localizations.enterOtpCode(
-                                        '\u200E$displayPhone\u200E',
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      textDirection: appDirection,
-                                      style: textTheme.bodyMedium?.copyWith(
-                                        color: colorScheme.onSurfaceVariant,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 24),
-                                    SizedBox(
-                                      width: pinAreaWidth,
-                                      child: PinCodeTextField(
-                                        appContext: context,
-                                        length: _otpLength,
-                                        obscureText: false,
-                                        animationType: AnimationType.fade,
-                                        keyboardType: TextInputType.number,
-                                        inputFormatters: [
-                                          FilteringTextInputFormatter.allow(
-                                            RegExp(r'[0-9۰-۹٠-٩]'),
-                                          ),
-                                          if (isRtl) PersianDigitFormatter(),
-                                        ],
-                                        textStyle: textTheme.titleLarge
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              color: colorScheme.onSurface,
-                                            ),
-                                        pinTheme: PinTheme(
-                                          shape: PinCodeFieldShape.box,
-                                          borderRadius: BorderRadius.circular(
-                                            8,
-                                          ),
-                                          fieldHeight: fieldSize,
-                                          fieldWidth: fieldSize,
-                                          activeFillColor: colorScheme.surface,
-                                          inactiveColor:
-                                              colorScheme.outlineVariant,
-                                          inactiveFillColor: colorScheme
-                                              .surfaceContainerHighest
-                                              .withValues(alpha: 0.5),
-                                          selectedFillColor:
-                                              colorScheme.surface,
-                                          selectedColor: colorScheme.primary,
-                                          activeColor: colorScheme.primary,
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                    cardPadding,
+                                    cardPadding,
+                                    cardPadding,
+                                    cardPadding + 16,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: colorScheme.surface,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colorScheme.shadow.withValues(
+                                          alpha: 0.18,
                                         ),
-                                        animationDuration: const Duration(
-                                          milliseconds: 300,
-                                        ),
-                                        backgroundColor: Colors.transparent,
-                                        enableActiveFill: true,
-                                        errorAnimationController:
-                                            _errorController,
-                                        controller: _otpController,
-                                        onCompleted: (value) {},
-                                        onChanged: (value) {},
+                                        offset: const Offset(0, 8),
+                                        blurRadius: 20,
                                       ),
-                                    ),
-                                    const SizedBox(height: 18),
-                                    InkWell(
-                                      onTap: _seconds == 0 && !_isResending
-                                          ? () {
-                                              _resendCode();
-                                            }
-                                          : null,
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            50,
-                                          ),
-                                          color: colorScheme
-                                              .surfaceContainerHighest
-                                              .withValues(alpha: 0.5),
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 16,
-                                          vertical: 8,
-                                        ),
-                                        child: Text(
-                                          _seconds > 0
-                                              ? localizations.didNotReceiveCode(
-                                                  displayTimer,
-                                                )
-                                              : localizations.resendCode,
-                                          style: textTheme.labelLarge?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            color: _seconds > 0
-                                                ? colorScheme.onSurfaceVariant
-                                                : colorScheme.primary,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 24),
-                                    AnimatedStartButton(
-                                      onTap: _verifyOtp,
-                                      isLoading: _isLoading,
-                                    ),
-                                    const SizedBox(height: 20),
-                                    Divider(
-                                      color: colorScheme.outlineVariant
-                                          .withValues(alpha: 0.5),
-                                    ),
-                                    const SizedBox(height: 12),
-                                    InkWell(
-                                      onTap: _handleBack,
-                                      child: Text(
-                                        localizations.changeNumber,
-                                        style: textTheme.bodyMedium?.copyWith(
+                                    ],
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        localizations.welcome,
+                                        style: textTheme.titleLarge?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          color: colorScheme.primary,
+                                          color: colorScheme.onSurface,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(height: 10),
+                                      Divider(
+                                        color: colorScheme.outlineVariant
+                                            .withValues(alpha: 0.5),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Text(
+                                        localizations.enterOtpCode(
+                                          '\u200E$displayPhone\u200E',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        textDirection: appDirection,
+                                        style: textTheme.bodyMedium?.copyWith(
+                                          color: colorScheme.onSurfaceVariant,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 24),
+                                      SizedBox(
+                                        width: pinAreaWidth,
+                                        child: PinCodeTextField(
+                                          appContext: context,
+                                          length: _otpLength,
+                                          obscureText: false,
+                                          animationType: AnimationType.fade,
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter.allow(
+                                              RegExp(
+                                                '[0-9\u06f0-\u06f9\u0660-\u0669]',
+                                              ),
+                                            ),
+                                            if (isRtl) PersianDigitFormatter(),
+                                          ],
+                                          textStyle: textTheme.titleLarge
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: colorScheme.onSurface,
+                                              ),
+                                          pinTheme: PinTheme(
+                                            shape: PinCodeFieldShape.box,
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                            fieldHeight: fieldSize,
+                                            fieldWidth: fieldSize,
+                                            activeFillColor:
+                                                colorScheme.surface,
+                                            inactiveColor:
+                                                colorScheme.outlineVariant,
+                                            inactiveFillColor: colorScheme
+                                                .surfaceContainerHighest
+                                                .withValues(alpha: 0.5),
+                                            selectedFillColor:
+                                                colorScheme.surface,
+                                            selectedColor: colorScheme.primary,
+                                            activeColor: colorScheme.primary,
+                                          ),
+                                          animationDuration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          backgroundColor: Colors.transparent,
+                                          enableActiveFill: true,
+                                          errorAnimationController:
+                                              _errorController,
+                                          controller: _otpController,
+                                          onCompleted: (value) {},
+                                          onChanged: (value) {},
+                                        ),
+                                      ),
+                                      const SizedBox(height: 18),
+                                      InkWell(
+                                        onTap: _seconds == 0 && !_isResending
+                                            ? () {
+                                                _resendCode();
+                                              }
+                                            : null,
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            color: colorScheme
+                                                .surfaceContainerHighest
+                                                .withValues(alpha: 0.5),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 8,
+                                          ),
+                                          child: Text(
+                                            _seconds > 0
+                                                ? localizations
+                                                      .didNotReceiveCode(
+                                                        displayTimer,
+                                                      )
+                                                : localizations.resendCode,
+                                            style: textTheme.labelLarge
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: _seconds > 0
+                                                      ? colorScheme
+                                                            .onSurfaceVariant
+                                                      : colorScheme.primary,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 24),
+                                      AnimatedStartButton(
+                                        onTap: _verifyOtp,
+                                        isLoading: _isLoading,
+                                      ),
+                                      const SizedBox(height: 20),
+                                      Divider(
+                                        color: colorScheme.outlineVariant
+                                            .withValues(alpha: 0.5),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      InkWell(
+                                        onTap: _handleBack,
+                                        borderRadius: BorderRadius.circular(12),
+                                        child: ConstrainedBox(
+                                          constraints: const BoxConstraints(
+                                            minWidth: 48,
+                                            minHeight: 48,
+                                          ),
+                                          child: Center(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 12,
+                                                  ),
+                                              child: Text(
+                                                localizations.changeNumber,
+                                                style: textTheme.bodyMedium
+                                                    ?.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color:
+                                                          colorScheme.primary,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                             Positioned(
-                              bottom: -20,
+                              bottom: 0,
                               left: 0,
                               right: 0,
                               child: Center(
