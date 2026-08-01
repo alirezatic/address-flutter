@@ -213,92 +213,95 @@ class _LoginSheetState extends State<LoginSheet> {
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.fromLTRB(
-                              cardPadding,
-                              cardPadding,
-                              cardPadding,
-                              cardPadding + 16,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(24),
-                              color: colorScheme.surface,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: colorScheme.shadow.withValues(
-                                    alpha: 0.35,
-                                  ),
-                                  blurRadius: 24,
-                                  offset: const Offset(0, 10),
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  localizations.authEntryTitle,
-                                  style: textTheme.headlineSmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: colorScheme.primary,
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                Text(
-                                  localizations.authEntrySubtitle,
-                                  style: textTheme.titleMedium?.copyWith(
-                                    color: colorScheme.onSurfaceVariant,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(height: 24),
-                                _buildPhoneInputField(localizations),
-                                const SizedBox(height: 28),
-                                Directionality(
-                                  textDirection: TextDirection.ltr,
-                                  child: ListenableBuilder(
-                                    listenable: _loginController,
-                                    builder: (context, child) {
-                                      return AnimatedStartButton(
-                                        onTap: _handleLogin,
-                                        isLoading: _loginController.isLoading,
-                                      );
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 28),
-                                const OrDivider(),
-                                const SizedBox(height: 24),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: _buildSocialButton(
-                                        Icons.email_outlined,
-                                        localizations.email,
-                                      ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.fromLTRB(
+                                cardPadding,
+                                cardPadding,
+                                cardPadding,
+                                cardPadding + 16,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24),
+                                color: colorScheme.surface,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: colorScheme.shadow.withValues(
+                                      alpha: 0.35,
                                     ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
-                                      child: _buildSocialButton(
-                                        Icons.g_mobiledata_rounded,
-                                        'Google',
-                                      ),
+                                    blurRadius: 24,
+                                    offset: const Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    localizations.authEntryTitle,
+                                    style: textTheme.headlineSmall?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: colorScheme.primary,
                                     ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
-                                      child: _buildSocialButton(
-                                        Icons.apple,
-                                        'Apple',
-                                      ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Text(
+                                    localizations.authEntrySubtitle,
+                                    style: textTheme.titleMedium?.copyWith(
+                                      color: colorScheme.onSurfaceVariant,
                                     ),
-                                  ],
-                                ),
-                              ],
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(height: 24),
+                                  _buildPhoneInputField(localizations),
+                                  const SizedBox(height: 28),
+                                  Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: ListenableBuilder(
+                                      listenable: _loginController,
+                                      builder: (context, child) {
+                                        return AnimatedStartButton(
+                                          onTap: _handleLogin,
+                                          isLoading: _loginController.isLoading,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(height: 28),
+                                  const OrDivider(),
+                                  const SizedBox(height: 24),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: _buildSocialButton(
+                                          Icons.email_outlined,
+                                          localizations.email,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: _buildSocialButton(
+                                          Icons.g_mobiledata_rounded,
+                                          'Google',
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: _buildSocialButton(
+                                          Icons.apple,
+                                          'Apple',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Positioned(
-                            bottom: -20,
+                            bottom: 0,
                             left: 0,
                             right: 0,
                             child: Center(
@@ -400,7 +403,9 @@ class _LoginSheetState extends State<LoginSheet> {
                 controller: _mobileNumberController,
                 keyboardType: TextInputType.phone,
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9۰-۹٠-٩]')),
+                  FilteringTextInputFormatter.allow(
+                    RegExp('[0-9\u06F0-\u06F9\u0660-\u0669]'),
+                  ),
                   if (isRtl) PersianDigitFormatter(),
                 ],
                 style: textTheme.titleMedium?.copyWith(
