@@ -163,7 +163,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get passengerServices => ' سفر';
 
   @override
-  String get cargoServices => 'بارو کالا';
+  String get cargoServices => 'کالا و بار';
 
   @override
   String get foodServices => 'غذا و\nفروشگاه';
