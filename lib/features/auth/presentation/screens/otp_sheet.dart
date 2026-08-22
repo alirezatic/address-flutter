@@ -32,6 +32,9 @@ class OtpSheet extends StatefulWidget {
 class _OtpSheetState extends State<OtpSheet> {
   static const double _maximumCardWidth = 520;
   static const int _otpLength = 5;
+  static const MethodChannel _smsRetrieverChannel = MethodChannel(
+    'address/sms_retriever',
+  );
 
   late int _seconds;
   Timer? _timer;
@@ -53,9 +56,11 @@ class _OtpSheetState extends State<OtpSheet> {
     _otpFlowController = OtpController(challenge: widget.challenge);
     _seconds = widget.challenge.retryAfterSeconds;
     _startTimer();
+    _smsRetrieverChannel.setMethodCallHandler(_handleSmsRetrieverCall);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _applyDevelopmentOtp();
+      _consumePendingSms();
     });
   }
 
@@ -153,6 +158,52 @@ class _OtpSheetState extends State<OtpSheet> {
       text: developmentOtp,
       selection: TextSelection.collapsed(offset: developmentOtp.length),
     );
+  }
+
+  Future<dynamic> _handleSmsRetrieverCall(MethodCall call) async {
+    if (call.method == 'onSmsReceived' && call.arguments is String) {
+      await _applySmsMessage(call.arguments as String);
+    }
+    return null;
+  }
+
+  Future<void> _consumePendingSms() async {
+    try {
+      final message = await _smsRetrieverChannel.invokeMethod<String>(
+        'takePendingSms',
+      );
+
+      if (message != null) {
+        await _applySmsMessage(message);
+      }
+    } catch (_) {
+      // Manual OTP entry remains available.
+    }
+  }
+
+  Future<void> _applySmsMessage(String message) async {
+    if (!mounted || _isLoading) {
+      return;
+    }
+
+    final normalized = message.toEnglishDigit();
+    final match = RegExp(r'\d{5}').firstMatch(normalized);
+    final otp = match?.group(0);
+
+    if (otp == null) {
+      return;
+    }
+
+    _otpController.value = TextEditingValue(
+      text: otp,
+      selection: TextSelection.collapsed(offset: otp.length),
+    );
+
+    await Future<void>.delayed(const Duration(milliseconds: 100));
+
+    if (mounted) {
+      await _verifyOtp();
+    }
   }
 
   void _showControllerError() {
@@ -293,6 +344,7 @@ class _OtpSheetState extends State<OtpSheet> {
   @override
   void dispose() {
     _timer?.cancel();
+    _smsRetrieverChannel.setMethodCallHandler(null);
     _removeErrorOverlay();
     _errorController.close();
     _otpController.dispose();
@@ -477,7 +529,9 @@ class _OtpSheetState extends State<OtpSheet> {
                                           errorAnimationController:
                                               _errorController,
                                           controller: _otpController,
-                                          onCompleted: (value) {},
+                                          onCompleted: (value) {
+                                            _verifyOtp();
+                                          },
                                           onChanged: (value) {},
                                         ),
                                       ),

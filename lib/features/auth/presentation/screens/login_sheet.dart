@@ -50,6 +50,13 @@ class _LoginSheetState extends State<LoginSheet> {
     FocusScope.of(context).unfocus();
 
     final rawPhone = _mobileNumberController.text.toEnglishDigit().trim();
+    try {
+      await const MethodChannel(
+        'address/sms_retriever',
+      ).invokeMethod<void>('startSmsRetriever');
+    } catch (_) {
+      // Manual OTP entry remains available.
+    }
 
     final result = await _loginController.validateAndRequestOtp(
       rawPhone,
