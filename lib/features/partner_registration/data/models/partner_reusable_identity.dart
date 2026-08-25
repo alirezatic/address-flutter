@@ -76,13 +76,18 @@ class PartnerReusableIdentity {
   }
 
   bool get isComplete {
-    final identityNationalId = applicantType == PartnerApplicantType.legalEntity
+    final isLegalEntity = applicantType == PartnerApplicantType.legalEntity;
+    final identityNationalId = isLegalEntity
         ? representativeNationalId
         : nationalId;
+    final companyInformationIsComplete =
+        !isLegalEntity ||
+        (companyName.trim().isNotEmpty && companyNationalId.length == 11);
 
     return verificationId.isNotEmpty &&
         identityNationalId.length == 10 &&
         mobile.isNotEmpty &&
+        companyInformationIsComplete &&
         nationalCardReference.isNotEmpty &&
         livenessSessionId.isNotEmpty &&
         livenessVideoReference.isNotEmpty;

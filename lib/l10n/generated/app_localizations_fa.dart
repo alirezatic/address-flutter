@@ -175,7 +175,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get repairServices => 'تعمیر و\nقطعات یدکی';
 
   @override
-  String get insuranceServices => 'همکاران آدرس';
+  String get insuranceServices => 'همکاری با آدرس';
 
   @override
   String get comingSoon => 'این بخش به‌زودی فعال می‌شود.';
@@ -798,7 +798,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get partnersBack => 'بازگشت';
 
   @override
-  String get partnersBrandTitle => 'همکاران آدرس';
+  String get partnersBrandTitle => 'همکاری با آدرس';
 
   @override
   String get partnersFleetTypes => 'انواع ناوگان';

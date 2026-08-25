@@ -16,19 +16,13 @@ class PartnerIdentityResultArgs {
     required this.draft,
     required this.verification,
     required this.mobile,
-    required this.companyName,
-    required this.companyNationalId,
-    required this.nationalCardImagePath,
-    required this.nationalCardImageName,
+    required this.birthDateInput,
   });
 
   final PartnerRegistrationDraft draft;
   final PartnerIdentityVerification verification;
   final String mobile;
-  final String companyName;
-  final String companyNationalId;
-  final String nationalCardImagePath;
-  final String nationalCardImageName;
+  final String birthDateInput;
 }
 
 class PartnerIdentityResultScreen extends StatefulWidget {
@@ -191,10 +185,7 @@ class _PartnerIdentityResultScreenState
       _controller.updateVerifiedApplicant(
         verification: _verification,
         mobile: widget.args.mobile,
-        companyName: widget.args.companyName,
-        companyNationalId: widget.args.companyNationalId,
-        nationalCardImagePath: widget.args.nationalCardImagePath,
-        nationalCardImageName: widget.args.nationalCardImageName,
+        birthDateInput: widget.args.birthDateInput,
       );
 
       if (!mounted) {

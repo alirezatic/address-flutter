@@ -27,6 +27,10 @@ enum PartnerItemId {
   storeBakeryPastry,
   storeDairy,
   storeBeautyHealth,
+  storePharmacy,
+  storeStationery,
+  storeCulturalProducts,
+
   companyFoodBeverage,
   companyBeautyHealth,
   companyCleaning,
@@ -36,6 +40,7 @@ enum PartnerItemId {
   companyHeavyVehicleParts,
   companyRetailEquipment,
   companyPackagingDisposable,
+
   driverMotorcycle,
   driverPassengerCar,
   driverPickup,
@@ -45,6 +50,7 @@ enum PartnerItemId {
   driverLightTruck,
   driverTruck,
   driverTractorTrailer,
+
   foodIranian,
   foodInternational,
   foodSeafood,
@@ -53,7 +59,9 @@ enum PartnerItemId {
   foodCatering,
   foodBakeryDessert,
   foodHealthyDiet,
+
   otherLaundry,
+  otherCarpetCleaning,
   otherEvents,
   otherHospitality,
   otherTechnicalRepair,

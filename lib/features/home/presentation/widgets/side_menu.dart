@@ -96,9 +96,11 @@ class _SideMenuState extends State<SideMenu> {
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     final user = _authSession.user;
+
     final displayName = user?.displayName.isNotEmpty == true
         ? user!.displayName
         : localizations.addressUser;
+
     final phone = _formatMenuPhone(user?.phone ?? '');
 
     final entries = <_SideMenuEntry>[
@@ -127,6 +129,11 @@ class _SideMenuState extends State<SideMenu> {
         icon: CupertinoIcons.envelope_fill,
         label: localizations.messages,
       ),
+      const _SideMenuEntry(
+        id: 'support',
+        icon: Icons.support_agent_rounded,
+        label: 'پشتیبانی',
+      ),
       _SideMenuEntry(
         id: 'business',
         icon: CupertinoIcons.briefcase_fill,
@@ -144,6 +151,7 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                const SizedBox(height: 66),
                 Material(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(AppRadiusTokens.card),
@@ -214,10 +222,6 @@ class _SideMenuState extends State<SideMenu> {
                               ],
                             ),
                           ),
-                          Icon(
-                            Icons.chevron_left_rounded,
-                            color: colors.onSurfaceVariant,
-                          ),
                         ],
                       ),
                     ),
@@ -275,6 +279,7 @@ class _SideMenuState extends State<SideMenu> {
 
     if (id != 'services') {
       final localizations = AppLocalizations.of(context);
+
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(content: Text(localizations.comingSoon)));
@@ -285,6 +290,7 @@ class _SideMenuState extends State<SideMenu> {
 String _menuAsciiDigits(String value) {
   const persian = '۰۱۲۳۴۵۶۷۸۹';
   const arabic = '٠١٢٣٤٥٦٧٨٩';
+
   final buffer = StringBuffer();
 
   for (final rune in value.runes) {
@@ -307,6 +313,7 @@ String _menuAsciiDigits(String value) {
 String _formatMenuPhone(String value) {
   final trimmed = value.trim();
   final digits = _menuAsciiDigits(trimmed);
+
   String? normalized;
 
   if (digits.startsWith('98')) {
@@ -322,8 +329,10 @@ String _formatMenuPhone(String value) {
   }
 
   final national = normalized.substring(3);
+
   return '+98 ${national.substring(0, 3)} '
-      '${national.substring(3, 6)} ${national.substring(6)}';
+      '${national.substring(3, 6)} '
+      '${national.substring(6)}';
 }
 
 class _SideMenuEntry {

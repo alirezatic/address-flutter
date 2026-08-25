@@ -49,6 +49,7 @@ class PartnerVerificationRepository {
   Future<PartnerIdentityVerification> checkIdentity({
     required String mobile,
     required String nationalId,
+    required String birthDate,
     required bool consentAccepted,
   }) async {
     try {
@@ -57,6 +58,7 @@ class PartnerVerificationRepository {
         data: <String, Object>{
           'mobile': mobile,
           'nationalId': nationalId,
+          'birthDate': birthDate,
           'consentAccepted': consentAccepted,
         },
       );

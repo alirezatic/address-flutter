@@ -9,7 +9,7 @@ abstract final class PartnerCatalog {
       selectionMode: PartnerSelectionMode.primarySecondary,
       items: <PartnerItemDefinition>[
         PartnerItemDefinition(id: PartnerItemId.storeSupermarket, emoji: '🏪'),
-        PartnerItemDefinition(id: PartnerItemId.storeGrocery, emoji: '🧺'),
+        PartnerItemDefinition(id: PartnerItemId.storeGrocery, emoji: '🛒'),
         PartnerItemDefinition(id: PartnerItemId.storeProtein, emoji: '🥩'),
         PartnerItemDefinition(
           id: PartnerItemId.storeFruitVegetable,
@@ -18,8 +18,15 @@ abstract final class PartnerCatalog {
         PartnerItemDefinition(id: PartnerItemId.storeBakeryPastry, emoji: '🥐'),
         PartnerItemDefinition(id: PartnerItemId.storeDairy, emoji: '🥛'),
         PartnerItemDefinition(id: PartnerItemId.storeBeautyHealth, emoji: '💄'),
+        PartnerItemDefinition(id: PartnerItemId.storePharmacy, emoji: '💊'),
+        PartnerItemDefinition(id: PartnerItemId.storeStationery, emoji: '✏️'),
+        PartnerItemDefinition(
+          id: PartnerItemId.storeCulturalProducts,
+          emoji: '📚',
+        ),
       ],
     ),
+
     PartnerCategoryDefinition(
       id: PartnerCategoryId.companies,
       imagePath: 'assets/images/partners/cat-suppliers.webp',
@@ -60,6 +67,7 @@ abstract final class PartnerCatalog {
         ),
       ],
     ),
+
     PartnerCategoryDefinition(
       id: PartnerCategoryId.drivers,
       imagePath: 'assets/images/partners/cat-drivers.webp',
@@ -72,8 +80,8 @@ abstract final class PartnerCatalog {
         ),
         PartnerItemDefinition(id: PartnerItemId.driverPickup, emoji: '🛻'),
         PartnerItemDefinition(id: PartnerItemId.driverVan, emoji: '🚐'),
-        PartnerItemDefinition(id: PartnerItemId.driverMinibus, emoji: '🚌'),
-        PartnerItemDefinition(id: PartnerItemId.driverBus, emoji: '🚍'),
+        PartnerItemDefinition(id: PartnerItemId.driverMinibus, emoji: '🚐'),
+        PartnerItemDefinition(id: PartnerItemId.driverBus, emoji: '🚌'),
         PartnerItemDefinition(id: PartnerItemId.driverLightTruck, emoji: '🚚'),
         PartnerItemDefinition(id: PartnerItemId.driverTruck, emoji: '🚛'),
         PartnerItemDefinition(
@@ -82,6 +90,7 @@ abstract final class PartnerCatalog {
         ),
       ],
     ),
+
     PartnerCategoryDefinition(
       id: PartnerCategoryId.food,
       imagePath: 'assets/images/partners/cat-food.webp',
@@ -97,12 +106,17 @@ abstract final class PartnerCatalog {
         PartnerItemDefinition(id: PartnerItemId.foodHealthyDiet, emoji: '🥗'),
       ],
     ),
+
     PartnerCategoryDefinition(
       id: PartnerCategoryId.other,
       imagePath: 'assets/images/partners/cat-services.webp',
       selectionMode: PartnerSelectionMode.multiple,
       items: <PartnerItemDefinition>[
         PartnerItemDefinition(id: PartnerItemId.otherLaundry, emoji: '🧺'),
+        PartnerItemDefinition(
+          id: PartnerItemId.otherCarpetCleaning,
+          emoji: '🧹',
+        ),
         PartnerItemDefinition(id: PartnerItemId.otherEvents, emoji: '🎉'),
         PartnerItemDefinition(id: PartnerItemId.otherHospitality, emoji: '🏨'),
         PartnerItemDefinition(

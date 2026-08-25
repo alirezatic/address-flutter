@@ -1152,6 +1152,9 @@ class _PartnerApplicationCorrectionScreenState
     final verification = await _verificationRepository.checkIdentity(
       mobile: mobile,
       nationalId: nationalId,
+      birthDate: _draft.birthDateInput.trim().isNotEmpty
+          ? _draft.birthDateInput.trim()
+          : _draft.verifiedBirthDate.trim(),
       consentAccepted: true,
     );
 

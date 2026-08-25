@@ -19,6 +19,8 @@ abstract final class AppRoutePaths {
       '/partners/registration/identity-result';
   static const String partnerRegistrationLiveness =
       '/partners/registration/liveness';
+  static const String partnerRegistrationApplicantDetails =
+      '/partners/registration/applicant-details';
   static const String partnerRegistrationStoreInfo =
       '/partners/registration/store-info';
   static const String partnerRegistrationMapConfirmation =

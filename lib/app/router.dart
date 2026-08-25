@@ -14,6 +14,7 @@ import 'package:address/features/home/presentation/screens/home_screen.dart';
 import 'package:address/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:address/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:address/features/partner_registration/domain/models/partner_registration_draft.dart';
+import 'package:address/features/partner_registration/presentation/screens/partner_applicant_details_screen.dart';
 import 'package:address/features/partner_registration/presentation/screens/partner_applicant_type_screen.dart';
 import 'package:address/features/partner_registration/presentation/screens/partner_application_correction_screen.dart';
 import 'package:address/features/partner_registration/presentation/screens/partner_application_details_screen.dart';
@@ -242,6 +243,29 @@ abstract final class AppRouter {
           }
 
           return PartnerLivenessScreen(draft: draft);
+        },
+      ),
+      GoRoute(
+        path: AppRoutePaths.partnerRegistrationApplicantDetails,
+        redirect: (context, state) {
+          final draft = state.extra;
+          return draft is PartnerRegistrationDraft &&
+                  draft.applicantType != null &&
+                  draft.identityVerified &&
+                  draft.livenessVerified
+              ? null
+              : addressPartnersPath;
+        },
+        builder: (context, state) {
+          final draft = state.extra;
+          if (draft is! PartnerRegistrationDraft ||
+              draft.applicantType == null ||
+              !draft.identityVerified ||
+              !draft.livenessVerified) {
+            return const AddressPartnersScreen();
+          }
+
+          return PartnerApplicantDetailsScreen(draft: draft);
         },
       ),
       GoRoute(

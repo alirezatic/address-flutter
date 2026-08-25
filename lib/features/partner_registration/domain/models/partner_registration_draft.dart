@@ -16,6 +16,7 @@ class PartnerRegistrationDraft {
     this.companyNationalId = '',
     this.representativeNationalId = '',
     this.mobile = '',
+    this.birthDateInput = '',
     this.landline = '',
     this.email = '',
     this.nationalCardImagePath = '',
@@ -68,6 +69,7 @@ class PartnerRegistrationDraft {
   final String companyNationalId;
   final String representativeNationalId;
   final String mobile;
+  final String birthDateInput;
   final String landline;
   final String email;
   final String nationalCardImagePath;
@@ -223,6 +225,7 @@ class PartnerRegistrationDraft {
         applicantValue['representativeNationalId'],
       ),
       mobile: _readString(applicantValue['mobile']),
+      birthDateInput: _readString(applicantValue['verifiedBirthDate']),
       landline: _readString(applicantValue['landline']),
       email: _readString(applicantValue['email']),
       nationalCardImagePath: _readString(nationalCard['reference']),
@@ -281,6 +284,7 @@ class PartnerRegistrationDraft {
     String? companyNationalId,
     String? representativeNationalId,
     String? mobile,
+    String? birthDateInput,
     String? landline,
     String? email,
     String? nationalCardImagePath,
@@ -333,6 +337,7 @@ class PartnerRegistrationDraft {
       representativeNationalId:
           representativeNationalId ?? this.representativeNationalId,
       mobile: mobile ?? this.mobile,
+      birthDateInput: birthDateInput ?? this.birthDateInput,
       landline: landline ?? this.landline,
       email: email ?? this.email,
       nationalCardImagePath:

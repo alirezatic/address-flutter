@@ -1954,8 +1954,6 @@ class _ProfileHero extends StatelessWidget {
                         ),
                         child: Text(
                           displayName,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.end,
                           style: Theme.of(context).textTheme.headlineSmall
                               ?.copyWith(

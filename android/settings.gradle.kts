@@ -11,6 +11,10 @@
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
+        maven {
+            url = uri("https://maven.aliyun.com/repository/google")
+        }
+
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -26,11 +30,15 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
     repositories {
+        maven {
+            url = uri("https://maven.aliyun.com/repository/google")
+        }
+
         google()
         mavenCentral()
 
         maven {
-            url = uri("https://storage.googleapis.com/download.flutter.io")
+            url = uri("https://storage.flutter-io.cn/download.flutter.io")
 
             content {
                 includeGroup("io.flutter")

@@ -234,7 +234,7 @@
                             "description":  "عنوان خدمات تعمیرات",
                             "type":  "text"
                         },
-    "insuranceServices":  "همکاران آدرس",
+    "insuranceServices":  "همکاری با آدرس",
     "@insuranceServices":  {
                                "description":  "عنوان خدمات بیمه‌ای",
                                "type":  "text"
@@ -451,7 +451,7 @@
     "storeProteinDescription":  "گوشت و فرآورده‌های پروتئینی",
     "partnersHintPrimarySecondary":  "یک فعالیت اصلی انتخاب کنید، سپس می‌توانید چند فعالیت جانبی اضافه کنید.",
     "partnersBack":  "بازگشت",
-    "partnersBrandTitle":  "همکاران آدرس",
+    "partnersBrandTitle":  "همکاری با آدرس",
     "partnersFleetTypes":  "انواع ناوگان",
     "partnersSupport":  "پشتیبانی",
     "partnersSupportSubtitle":  "همیشه در کنار شما",

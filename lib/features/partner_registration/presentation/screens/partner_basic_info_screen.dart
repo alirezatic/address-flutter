@@ -8,10 +8,8 @@ import 'package:address/core/design_system/components/layout/app_page_scaffold.d
 import 'package:address/core/design_system/tokens/app_design_tokens.dart';
 import 'package:address/features/partner_registration/data/partner_verification_repository.dart';
 import 'package:address/features/partner_registration/domain/models/partner_registration_draft.dart';
-import 'package:address/features/partner_registration/presentation/screens/partner_document_camera_screen.dart';
 import 'package:address/features/partner_registration/presentation/screens/partner_identity_result_screen.dart';
 import 'package:address/features/partner_registration/presentation/validation/partner_registration_validators.dart';
-import 'package:address/features/partner_registration/presentation/widgets/partner_image_picker_field.dart';
 import 'package:address/features/partner_registration/presentation/widgets/partner_registration_text_field.dart';
 import 'package:address/l10n/generated/app_localizations.dart';
 
@@ -28,17 +26,13 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late final PartnerVerificationRepository _repository;
-  late final TextEditingController _companyNameController;
-  late final TextEditingController _companyNationalIdController;
   late final TextEditingController _nationalIdController;
   late final TextEditingController _mobileController;
+  late final TextEditingController _birthDateController;
 
   bool _consentAccepted = false;
   bool _mobileKeyboardDismissed = false;
   bool _isChecking = false;
-  String _nationalCardImagePath = '';
-  String _nationalCardImageName = '';
-  String? _nationalCardImageError;
   String? _errorMessage;
 
   bool get _isLegalEntity =>
@@ -50,30 +44,23 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
 
     _repository = PartnerVerificationRepository();
 
-    _companyNameController = TextEditingController(
-      text: widget.draft.companyName,
-    );
-    _companyNationalIdController = TextEditingController(
-      text: widget.draft.companyNationalId,
-    );
-
     final identityNationalId = _isLegalEntity
         ? widget.draft.representativeNationalId
         : widget.draft.nationalId;
 
     _nationalIdController = TextEditingController(text: identityNationalId);
     _mobileController = TextEditingController(text: widget.draft.mobile);
-    _mobileController.addListener(_handleMobileChanged);
+    _birthDateController = TextEditingController(
+      text: widget.draft.birthDateInput,
+    );
 
-    _nationalCardImagePath = widget.draft.nationalCardImagePath;
-    _nationalCardImageName = widget.draft.nationalCardImageName;
+    _mobileController.addListener(_handleMobileChanged);
   }
 
   @override
   void dispose() {
-    _companyNameController.dispose();
-    _companyNationalIdController.dispose();
     _nationalIdController.dispose();
+    _birthDateController.dispose();
     _mobileController
       ..removeListener(_handleMobileChanged)
       ..dispose();
@@ -123,19 +110,6 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
       return null;
     }
 
-    String? companyNationalIdValidator(String? value) {
-      final requiredError = requiredValidator(value);
-      if (requiredError != null) {
-        return requiredError;
-      }
-
-      if (!PartnerRegistrationValidators.hasExactDigits(value ?? '', 11)) {
-        return localizations.partnerRegistrationInvalidCompanyNationalId;
-      }
-
-      return null;
-    }
-
     String? mobileValidator(String? value) {
       final requiredError = requiredValidator(value);
       if (requiredError != null) {
@@ -144,6 +118,19 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
 
       if (!PartnerRegistrationValidators.isIranianMobile(value ?? '')) {
         return localizations.partnerRegistrationInvalidIranianMobile;
+      }
+
+      return null;
+    }
+
+    String? birthDateValidator(String? value) {
+      final requiredError = requiredValidator(value);
+      if (requiredError != null) {
+        return requiredError;
+      }
+
+      if (!PartnerRegistrationValidators.isValidJalaliDate(value ?? '')) {
+        return MaterialLocalizations.of(context).invalidDateFormatLabel;
       }
 
       return null;
@@ -190,27 +177,6 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
                   ),
                 ),
                 const SizedBox(height: AppSpacingTokens.xxLarge),
-                if (_isLegalEntity) ...<Widget>[
-                  PartnerRegistrationTextField(
-                    controller: _companyNameController,
-                    label: localizations.partnerRegistrationCompanyName,
-                    textInputAction: TextInputAction.next,
-                    validator: requiredValidator,
-                  ),
-                  const SizedBox(height: AppSpacingTokens.medium),
-                  PartnerRegistrationTextField(
-                    controller: _companyNationalIdController,
-                    label: localizations.partnerRegistrationCompanyNationalId,
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
-                    inputFormatters:
-                        PartnerRegistrationValidators.digitFormatters(
-                          maxLength: 11,
-                        ),
-                    validator: companyNationalIdValidator,
-                  ),
-                  const SizedBox(height: AppSpacingTokens.medium),
-                ],
                 PartnerRegistrationTextField(
                   controller: _nationalIdController,
                   label: _isLegalEntity
@@ -228,9 +194,9 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
                 const SizedBox(height: AppSpacingTokens.medium),
                 PartnerRegistrationTextField(
                   controller: _mobileController,
-                  label: localizations.partnerVerificationOwnerMobile,
+                  label: localizations.partnerRegistrationMobile,
                   keyboardType: TextInputType.phone,
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   inputFormatters:
                       PartnerRegistrationValidators.digitFormatters(
                         maxLength: 11,
@@ -239,13 +205,14 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
                   validator: mobileValidator,
                 ),
                 const SizedBox(height: AppSpacingTokens.medium),
-                PartnerImagePickerField(
-                  title: localizations.partnerIdentityNationalCardImage,
-                  emptySubtitle: localizations
-                      .partnerIdentityNationalCardImageRequiredSubtitle,
-                  selectedName: _nationalCardImageName,
-                  errorText: _nationalCardImageError,
-                  onTap: _captureNationalCard,
+                PartnerRegistrationTextField(
+                  controller: _birthDateController,
+                  label: localizations.partnerVerificationBirthDate,
+                  keyboardType: TextInputType.datetime,
+                  textInputAction: TextInputAction.done,
+                  inputFormatters:
+                      PartnerRegistrationValidators.jalaliDateFormatters(),
+                  validator: birthDateValidator,
                 ),
                 const SizedBox(height: AppSpacingTokens.medium),
                 CheckboxListTile(
@@ -272,6 +239,7 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
                 const SizedBox(height: AppSpacingTokens.xxLarge),
                 Center(
                   child: AnimatedStartButton(
+                    title: localizations.partnerVerificationLookupIdentity,
                     icon: Icons.arrow_back_rounded,
                     isEnabled: !_isChecking && _consentAccepted,
                     isLoading: _isChecking,
@@ -287,58 +255,33 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
     );
   }
 
-  Future<void> _captureNationalCard() async {
-    FocusManager.instance.primaryFocus?.unfocus();
-    final localizations = AppLocalizations.of(context);
-
-    final result = await Navigator.of(context)
-        .push<PartnerDocumentCaptureResult>(
-          MaterialPageRoute<PartnerDocumentCaptureResult>(
-            builder: (context) {
-              return PartnerDocumentCameraScreen(
-                args: PartnerDocumentCameraArgs(
-                  title: localizations.partnerIdentityNationalCardCameraTitle,
-                  instruction: localizations
-                      .partnerIdentityNationalCardCameraInstruction,
-                  guideAspectRatio: 1.586,
-                ),
-              );
-            },
-          ),
-        );
-
-    if (!mounted || result == null) {
-      return;
-    }
-
-    setState(() {
-      _nationalCardImagePath = result.path;
-      _nationalCardImageName = result.name;
-      _nationalCardImageError = null;
-    });
-  }
-
   Future<void> _checkIdentity() async {
     FocusManager.instance.primaryFocus?.unfocus();
     TextInput.finishAutofillContext();
 
     final localizations = AppLocalizations.of(context);
     final formIsValid = _formKey.currentState?.validate() ?? false;
-    final hasNationalCard = _nationalCardImagePath.isNotEmpty;
 
-    setState(() {
-      _nationalCardImageError = hasNationalCard
-          ? null
-          : localizations.partnerIdentityNationalCardImageValidation;
-    });
-
-    if (_isChecking || !formIsValid || !hasNationalCard) {
+    if (_isChecking || !formIsValid) {
       return;
     }
 
     if (!_consentAccepted) {
       setState(() {
         _errorMessage = localizations.partnerVerificationConsentRequired;
+      });
+      return;
+    }
+
+    final birthDate = PartnerRegistrationValidators.normalizeJalaliDate(
+      _birthDateController.text,
+    );
+
+    if (birthDate == null) {
+      setState(() {
+        _errorMessage = MaterialLocalizations.of(
+          context,
+        ).invalidDateFormatLabel;
       });
       return;
     }
@@ -355,13 +298,11 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
       final nationalId = PartnerRegistrationValidators.normalizeDigits(
         _nationalIdController.text,
       );
-      final companyNationalId = PartnerRegistrationValidators.normalizeDigits(
-        _companyNationalIdController.text,
-      );
 
       final verification = await _repository.checkIdentity(
         mobile: mobile,
         nationalId: nationalId,
+        birthDate: birthDate,
         consentAccepted: true,
       );
 
@@ -379,10 +320,7 @@ class _PartnerBasicInfoScreenState extends State<PartnerBasicInfoScreen> {
           draft: widget.draft,
           verification: verification,
           mobile: mobile,
-          companyName: _companyNameController.text.trim(),
-          companyNationalId: companyNationalId,
-          nationalCardImagePath: _nationalCardImagePath,
-          nationalCardImageName: _nationalCardImageName,
+          birthDateInput: birthDate,
         ),
       );
     } on PartnerVerificationException catch (error) {

@@ -817,7 +817,7 @@ class _PartnerLivenessScreenState extends State<PartnerLivenessScreen>
       }
 
       context.pushReplacement(
-        AppRoutePaths.partnerRegistrationStoreInfo,
+        AppRoutePaths.partnerRegistrationApplicantDetails,
         extra: _registrationController.draft,
       );
     } on PartnerMediaUploadException catch (error) {

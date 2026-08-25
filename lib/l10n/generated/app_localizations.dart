@@ -423,7 +423,7 @@ abstract class AppLocalizations {
   /// عنوان خدمات بیمه‌ای
   ///
   /// In fa, this message translates to:
-  /// **'همکاران آدرس'**
+  /// **'همکاری با آدرس'**
   String get insuranceServices;
 
   /// No description provided for @comingSoon.
@@ -1617,7 +1617,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnersBrandTitle.
   ///
   /// In fa, this message translates to:
-  /// **'همکاران آدرس'**
+  /// **'همکاری با آدرس'**
   String get partnersBrandTitle;
 
   /// No description provided for @partnersFleetTypes.

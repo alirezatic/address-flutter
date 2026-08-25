@@ -42,6 +42,7 @@ class PartnerRegistrationController extends ChangeNotifier {
         companyNationalId: identity.companyNationalId,
         representativeNationalId: identity.representativeNationalId,
         mobile: identity.mobile,
+        birthDateInput: identity.verifiedBirthDate,
         landline: identity.landline,
         email: identity.email,
         nationalCardImagePath: identity.nationalCardReference,
@@ -71,6 +72,32 @@ class PartnerRegistrationController extends ChangeNotifier {
   void updateVerifiedApplicant({
     required PartnerIdentityVerification verification,
     required String mobile,
+    required String birthDateInput,
+  }) {
+    final isLegal = _draft.applicantType == PartnerApplicantType.legalEntity;
+
+    _draft = _draft.copyWith(
+      fullName: isLegal ? _draft.fullName : verification.fullName,
+      representativeName: isLegal ? verification.fullName : '',
+      nationalId: isLegal ? _draft.nationalId : verification.nationalId,
+      representativeNationalId: isLegal ? verification.nationalId : '',
+      mobile: mobile.trim(),
+      birthDateInput: birthDateInput.trim(),
+      identityVerificationId: verification.verificationId,
+      identityVerified: true,
+      identityReused: false,
+      verifiedFatherName: verification.fatherName,
+      verifiedBirthDate: verification.birthDate,
+      livenessSessionId: '',
+      livenessPhrase: '',
+      livenessVideoPath: '',
+      livenessVerified: false,
+    );
+
+    notifyListeners();
+  }
+
+  void updateApplicantDetails({
     required String companyName,
     required String companyNationalId,
     required String nationalCardImagePath,
@@ -79,23 +106,10 @@ class PartnerRegistrationController extends ChangeNotifier {
     final isLegal = _draft.applicantType == PartnerApplicantType.legalEntity;
 
     _draft = _draft.copyWith(
-      fullName: isLegal ? _draft.fullName : verification.fullName,
-      companyName: companyName.trim(),
-      representativeName: isLegal ? verification.fullName : '',
-      nationalId: isLegal ? _draft.nationalId : verification.nationalId,
-      companyNationalId: companyNationalId.trim(),
-      representativeNationalId: isLegal ? verification.nationalId : '',
-      mobile: mobile.trim(),
-      nationalCardImagePath: nationalCardImagePath,
-      nationalCardImageName: nationalCardImageName,
-      identityVerificationId: verification.verificationId,
-      identityVerified: true,
-      verifiedFatherName: verification.fatherName,
-      verifiedBirthDate: verification.birthDate,
-      livenessSessionId: '',
-      livenessPhrase: '',
-      livenessVideoPath: '',
-      livenessVerified: false,
+      companyName: isLegal ? companyName.trim() : '',
+      companyNationalId: isLegal ? companyNationalId.trim() : '',
+      nationalCardImagePath: nationalCardImagePath.trim(),
+      nationalCardImageName: nationalCardImageName.trim(),
     );
 
     notifyListeners();
